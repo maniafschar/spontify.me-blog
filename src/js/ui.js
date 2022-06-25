@@ -3,10 +3,11 @@ const { navigation } = require("./navigation");
 export { ui };
 
 class ui {
-	static page = 0;
+	static page = 1;
 	static switchingPage = false;
 	static animation;
 	static animationDuration = 10000;
+	static language = 'DE';
 
 	static q(path) {
 		return document.querySelector(path);
@@ -25,12 +26,12 @@ class ui {
 			var percent = (wTotal - w) / 2 / wTotal * 100;
 			e.style.left = percent + '%';
 			e.style.right = percent + '%';
-			e.style.top = (y / hTotal * 100) + '%';
 			e.style.bottom = hTotal - y;
 			r = ((hTotal - h - y) / hTotal * 100) + '%';
 		} else if (position.indexOf('right') > -1) {
-			e.style.top = (hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.3 : 0.4) / hTotal * 100) + '%';
+			y = hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.3 : 0.4);
 			e.style.right = wTotal - x;
+			e.style.bottom = ((hTotal - y - h) / hTotal * 100) + '%';
 			r = (100 - (w + x) / wTotal * 100) + '%';
 		} else if (position.indexOf('top') > -1) {
 			y = hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.3 : 0.4);
@@ -41,10 +42,12 @@ class ui {
 			e.style.bottom = ((hTotal - y - h) / hTotal * 100) + '%';
 			r = (y / hTotal * 100) + '%';
 		} else if (position.indexOf('left') > -1) {
-			e.style.top = (hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.3 : 0.4) / hTotal * 100) + '%';
+			y = hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.3 : 0.4);
 			e.style.left = x + w;
+			e.style.bottom = ((hTotal - y - h) / hTotal * 100) + '%';
 			r = (x / wTotal * 100) + '%';
 		}
+		e.style.top = (y / hTotal * 100) + '%';
 		e.style.transition = null;
 		e.style.visibility = 'visible';
 		return r;
@@ -98,6 +101,7 @@ class ui {
 			e.left = null;
 			e.visibility = null;
 		}
+		ui.q('body>page:nth-child(' + page + ')').style.transition = 'none';
 		ui.q('body>page:nth-child(' + page + ')').style.opacity = 0;
 		ui.q('body>page:nth-child(' + page + ') timer').style.transition = '';
 		ui.q('body>page:nth-child(' + page + ') timer').style.right = '100%';
@@ -107,6 +111,7 @@ class ui {
 		boxes = ui.qa('body>page:nth-child(' + page + ') box cover');
 		for (var i = 0; i < boxes.length; i++)
 			reset(boxes[i]);
+		ui.q('body>page:nth-child(' + page + ')').style.transition = null;
 	}
 	static switchPage(page, animationStop) {
 		if (ui.page == page || ui.switchingPage)
@@ -142,8 +147,7 @@ class ui {
 	static init() {
 		window.onresize = ui.resize;
 		ui.resize();
-		ui.switchPage(1);
-		ui.setLanguage('DE');
+		ui.setLanguage(ui.language);
 	}
 	static resize() {
 		var x = ui.q('body').offsetWidth / 72;
@@ -169,11 +173,21 @@ class ui {
 						}
 						e[i].innerHTML = s + (e[i].nodeName == 'BOX' ? '<cover></cover>' : '');
 					}
+					ui.language = language;
+					ui.q('language').innerHTML = language;
+					var page = ui.page;
+					ui.page = 0;
+					ui.resetPage(page);
+					setTimeout(function () { ui.switchPage(page, ui.animation ? false : true); }, 10);
 				} else
 					alert(xmlhttp.responseText);
 			}
 		};
 		xmlhttp.open('GET', 'js/lang/' + language + '.json', true);
 		xmlhttp.send();
+	}
+	static toggleLanguage() {
+		if (!ui.switchingPage)
+			ui.setLanguage(ui.language == 'DE' ? 'EN' : 'DE');
 	}
 }

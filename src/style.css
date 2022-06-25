@@ -282,7 +282,8 @@ index point:hover:before {
 }
 
 info,
-legal {
+legal,
+language {
 	position: absolute;
 	top: 1em;
 	color: rgba(255, 255, 255, 0.5);
@@ -291,6 +292,10 @@ legal {
 }
 
 info {
+	right: 10.5em;
+}
+
+language {
 	right: 8em;
 }
 
@@ -330,6 +335,10 @@ info>popup {
 info>popup img {
 	margin: 0 1em;
 	height: 3em;
+}
+
+info>popup div {
+	margin-bottom: 1.5em;
 }
 
 legal>popup {
