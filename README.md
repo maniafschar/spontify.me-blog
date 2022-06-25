@@ -1,4 +1,4 @@
-findapp &middot; web
+spontify.me &middot; blog
 ==============================================================================
 
 By [**Mani Afschar Yazdi**](https://afschar-yazdi.de)
