@@ -1,0 +1,396 @@
+* {
+	-webkit-overflow-scrolling: touch;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-moz-tap-highlight-color: rgba(0, 0, 0, 0);
+	-moz-user-select: -moz-none;
+	-webkit-touch-callout: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizelegibility;
+	margin: 0;
+	padding: 0;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+html {
+	overflow: hidden;
+}
+
+@font-face {
+	font-family: 'Comfortaa';
+	font-style: regular;
+	font-weight: 400;
+	src: url(Comfortaa-Regular.ttf) format('truetype');
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	color: white;
+	font-family: Comfortaa, Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body>page {
+	transition: all 1s ease-out;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+}
+
+body>page.bottom {
+	background: linear-gradient(rgb(22, 160, 133) 0%, rgb(244, 208, 63) 100%);
+}
+
+body>page.right {
+	background: linear-gradient(140deg, rgb(35, 21, 87) 0%, rgb(68, 16, 122) 28%, rgb(255, 19, 97) 67%, rgb(255, 248, 0) 100%);
+}
+
+body>page.top {
+	background: linear-gradient(90deg, rgb(134, 143, 150) 0%, rgb(89, 97, 100) 100%);
+}
+
+body>page.left {
+	background: linear-gradient(120deg, rgb(203, 186, 204) 0%, rgb(36, 57, 73) 100%);
+}
+
+body>page.right>timer {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+body>page>timer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 100%;
+	height: 0.75em;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+body>logo {
+	background: url(https://spontify.me/images/logo.svg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	left: 0;
+	top: 1.5em;
+	width: 14em;
+	height: 4.5em;
+}
+
+page.bottom box.image {
+	bottom: 50vh;
+	right: 15vw;
+	top: 50vh;
+	left: 15vw;
+}
+
+page.bottom box.image cover {
+	background: rgb(239, 134, 9);
+}
+
+page.bottom box.title,
+page.bottom box.text {
+	text-align: center;
+	max-width: 70vw;
+}
+
+page.bottom box.title cover,
+page.bottom box.text cover {
+	background: rgb(5, 138, 155);
+}
+
+page.right box.image {
+	bottom: 15vh;
+	right: 50vw;
+	top: 15vh;
+	left: 50vw;
+}
+
+page.right box.image cover {
+	background: rgb(35, 21, 87);
+}
+
+page.right box.title,
+page.right box.text {
+	left: 15vw;
+	text-align: left;
+	max-width: 50vw;
+}
+
+page.right box.title cover,
+page.right box.text cover {
+	background: rgb(255, 19, 97);
+}
+
+page.top box.image {
+	bottom: 50vh;
+	right: 15vw;
+	top: 50vh;
+	left: 15vw;
+}
+
+page.top box.image cover {
+	background: rgb(47, 59, 74);
+}
+
+page.top box.title,
+page.top box.text {
+	text-align: center;
+	max-width: 70vw;
+}
+
+page.top box.title cover,
+page.top box.text cover {
+	background: rgb(255, 255, 88);
+}
+
+page.left box.image {
+	bottom: 15vh;
+	right: 50vw;
+	top: 15vh;
+	left: 50vw;
+}
+
+page.left box.image cover {
+	background: rgb(36, 57, 73);
+}
+
+page.left box.title,
+page.left box.text {
+	right: 15vw;
+	text-align: right;
+	max-width: 50vw;
+}
+
+page.left box.title cover,
+page.left box.text cover {
+	background: rgb(203, 186, 204);
+}
+
+box {
+	overflow: hidden;
+	position: absolute;
+	transition: all .4s ease-out;
+}
+
+box.image {
+	display: flex;
+	align-items: center;
+}
+
+box.title {
+	visibility: hidden;
+	white-space: nowrap;
+	font-size: 1.6em;
+	padding: 0.5em;
+}
+
+box.text {
+	visibility: hidden;
+	line-height: 1.8;
+	padding: 0.8em;
+}
+
+box>img {
+	width: 100%;
+}
+
+box>cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background: yellow;
+	transition: all .4s ease-out;
+}
+
+navigation {
+	position: absolute;
+	top: 50vh;
+	width: 3em;
+	height: 5em;
+	margin-top: -2.5em;
+	font-size: 3em;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.3);
+	line-height: 5;
+	cursor: pointer;
+}
+
+navigation.previous {
+	left: 0;
+}
+
+navigation.previous:before {
+	content: '<';
+}
+
+navigation.next {
+	right: 0;
+}
+
+navigation.next:before {
+	content: '>';
+}
+
+index {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	left: 0;
+	bottom: 0;
+	color: rgba(255, 255, 255, 0.5);
+	display: block;
+}
+
+index point {
+	cursor: pointer;
+	padding: 1em;
+	display: inline-block;
+	position: relative;
+}
+
+index point:before {
+	content: '·';
+	color: rgba(255, 255, 255, 0.3);
+	font-size: 4em;
+	position: absolute;
+	left: 0;
+	top: -0.2em;
+	text-align: center;
+	line-height: 1;
+	width: 100%;
+	height: 100%;
+	transition: all .4s ease-out;
+}
+
+index point.selected:before,
+index point:hover:before {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+info,
+legal {
+	position: absolute;
+	top: 1em;
+	color: rgba(255, 255, 255, 0.5);
+	transition: all .4s ease-out;
+	cursor: pointer;
+}
+
+info {
+	right: 8em;
+}
+
+legal {
+	right: 1em;
+}
+
+info:hover,
+legal:hover {
+	color: white;
+}
+
+info>popup,
+legal>popup {
+	transform: scale(0);
+	box-shadow: 0 0 5em rgba(0, 0, 0, 0.3);
+	background-color: rgba(255, 255, 255, 0.9);
+	position: absolute;
+	display: inline-block;
+	padding: 2em;
+	border-radius: 0.5em;
+	transition: all .4s ease-out;
+	top: 2em;
+	color: black;
+	line-height: 1.3;
+	min-width: 22em;
+	max-width: 90vw;
+	right: 0;
+}
+
+info>popup {
+	transform-origin: top right;
+	text-align: center;
+	min-width: 50vw;
+}
+
+info>popup img {
+	margin: 0 1em;
+	height: 3em;
+}
+
+legal>popup {
+	transform-origin: top right;
+	white-space: nowrap;
+	font-size: 0.8em;
+}
+
+.pulse {
+	animation-name: pulse_animation;
+	animation-duration: 3500ms;
+	transform-origin: 70% 70%;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes pulse_animation {
+	0% {
+		transform: scale(1);
+	}
+
+	30% {
+		transform: scale(1);
+	}
+
+	40% {
+		transform: scale(1.3);
+	}
+
+	50% {
+		transform: scale(1);
+	}
+
+	60% {
+		transform: scale(1);
+	}
+
+	70% {
+		transform: scale(1.1);
+	}
+
+	80% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+ul,
+ol {
+	margin: 1em 0;
+}
+
+ul li,
+ol li {
+	text-align: left;
+	margin: 0.5em 0 0.5em 1.25em;
+}
+
+ul li {
+	list-style-type: disc;
+}
