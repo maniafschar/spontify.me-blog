@@ -179,7 +179,6 @@ page.left box.text cover {
 box {
 	overflow: hidden;
 	position: absolute;
-	transition: all .7s ease-out;
 }
 
 box.image {
@@ -210,7 +209,6 @@ box>cover {
 	top: 0;
 	bottom: 0;
 	right: 0;
-	transition: all .7s ease-out;
 }
 
 navigation {
