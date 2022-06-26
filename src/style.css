@@ -31,8 +31,6 @@ html {
 }
 
 body {
-	padding: 0;
-	margin: 0;
 	overflow: hidden;
 	color: white;
 	font-family: Comfortaa, Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -64,11 +62,11 @@ body>page.left {
 	background: linear-gradient(120deg, rgb(203, 186, 204) 0%, rgb(36, 57, 73) 100%);
 }
 
-body>page.right>timer {
+body>page.right timer {
 	background-color: rgba(255, 255, 255, 0.2);
 }
 
-body>page>timer {
+body>page timer {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -181,7 +179,7 @@ page.left box.text cover {
 box {
 	overflow: hidden;
 	position: absolute;
-	transition: all .4s ease-out;
+	transition: all .7s ease-out;
 }
 
 box.image {
@@ -212,37 +210,22 @@ box>cover {
 	top: 0;
 	bottom: 0;
 	right: 0;
-	background: yellow;
-	transition: all .4s ease-out;
+	transition: all .7s ease-out;
 }
 
 navigation {
 	position: absolute;
-	top: 50vh;
-	width: 3em;
-	height: 5em;
-	margin-top: -2.5em;
-	font-size: 3em;
-	text-align: center;
-	color: rgba(255, 255, 255, 0.3);
-	line-height: 5;
-	cursor: pointer;
+	top: 0;
+	width: 50vw;
+	height: 100%;
 }
 
 navigation.previous {
 	left: 0;
 }
 
-navigation.previous:before {
-	content: '<';
-}
-
 navigation.next {
 	right: 0;
-}
-
-navigation.next:before {
-	content: '>';
 }
 
 index {
@@ -292,15 +275,15 @@ language {
 }
 
 info {
-	right: 10.5em;
+	right: 1em;
 }
 
 language {
-	right: 8em;
+	right: 4em;
 }
 
 legal {
-	right: 1em;
+	right: 6.8em;
 }
 
 info:hover,
@@ -402,4 +385,48 @@ ol li {
 
 ul li {
 	list-style-type: disc;
+}
+
+@media only screen and (max-width: 600px) {
+
+	page.bottom box.image {
+		right: 0;
+		left: 0;
+		align-items: end;
+	}
+
+	page.top box.image {
+		right: 0;
+		left: 0;
+		align-items: start;
+	}
+
+	page.top box.title,
+	page.top box.text {
+		transform: translate(0, 30px);
+	}
+
+	page.top box.image img {
+		transform: translate(0, 7em);
+	}
+
+	page.bottom box.title,
+	page.bottom box.text,
+	page.top box.title,
+	page.top box.text {
+		left: 0;
+		max-width: 100%;
+	}
+
+	page.right box.title,
+	page.right box.text {
+		left: 0;
+		max-width: 70%;
+	}
+
+	page.left box.title,
+	page.left box.text {
+		right: 0;
+		max-width: 70%;
+	}
 }

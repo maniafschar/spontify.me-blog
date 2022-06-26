@@ -21,33 +21,49 @@ class ui {
 	static positionBox(e, position) {
 		var x = e.offsetLeft, y, h = e.offsetHeight, w = e.offsetWidth, hTotal = ui.q('body').offsetHeight, wTotal = ui.q('body').offsetWidth, r;
 		e.style.transition = 'none';
-		if (position.indexOf('bottom') > -1) {
-			y = hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.15 : 0.25);
-			var percent = (wTotal - w) / 2 / wTotal * 100;
-			e.style.left = percent + '%';
-			e.style.right = percent + '%';
-			e.style.bottom = hTotal - y;
-			r = ((hTotal - h - y) / hTotal * 100) + '%';
-		} else if (position.indexOf('right') > -1) {
-			y = hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.3 : 0.4);
-			e.style.right = wTotal - x;
-			e.style.bottom = ((hTotal - y - h) / hTotal * 100) + '%';
-			r = (100 - (w + x) / wTotal * 100) + '%';
-		} else if (position.indexOf('top') > -1) {
-			y = hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.3 : 0.4);
-			var percent = (wTotal - w) / 2 / wTotal * 100;
-			e.style.left = percent + '%';
-			e.style.right = percent + '%';
-			e.style.top = ((y + h) / hTotal * 100) + '%';
-			e.style.bottom = ((hTotal - y - h) / hTotal * 100) + '%';
-			r = (y / hTotal * 100) + '%';
-		} else if (position.indexOf('left') > -1) {
-			y = hTotal * (e.getAttribute('class').indexOf('title') > -1 ? 0.3 : 0.4);
-			e.style.left = x + w;
-			e.style.bottom = ((hTotal - y - h) / hTotal * 100) + '%';
-			r = (x / wTotal * 100) + '%';
+		var inPercent = function (x, total) {
+			return (x / total * 100) + '%';
 		}
-		e.style.top = (y / hTotal * 100) + '%';
+		var fontSize = parseInt(ui.q('body').style.fontSize);
+		if (position.indexOf('bottom') > -1) {
+			y = hTotal * 0.15;
+			if (e.getAttribute('class').indexOf('text') > -1)
+				y += 3 * fontSize;
+			w = (wTotal - w) / 2;
+			e.style.top = inPercent(y, hTotal);
+			e.style.left = inPercent(w, wTotal);
+			e.style.right = e.style.left;
+			e.style.bottom = inPercent(hTotal - y, hTotal);
+			r = inPercent(hTotal - h - y, hTotal);
+		} else if (position.indexOf('right') > -1) {
+			y = hTotal * 0.3;
+			if (e.getAttribute('class').indexOf('text') > -1)
+				y += 3 * fontSize;
+			e.style.top = inPercent(y, hTotal);
+			e.style.right = inPercent(wTotal - x, wTotal);
+			e.style.left = inPercent(x, wTotal);
+			e.style.bottom = inPercent(hTotal - y - h, hTotal);
+			r = inPercent(wTotal - x - w, wTotal);
+		} else if (position.indexOf('top') > -1) {
+			y = hTotal * 0.3;
+			if (e.getAttribute('class').indexOf('text') > -1)
+				y += 3 * fontSize;
+			w = (wTotal - w) / 2;
+			e.style.top = inPercent(y + h, hTotal);
+			e.style.left = inPercent(w, wTotal);
+			e.style.right = e.style.left;
+			e.style.bottom = inPercent(hTotal - y - h, hTotal);
+			r = inPercent(y, hTotal);
+		} else if (position.indexOf('left') > -1) {
+			y = hTotal * 0.3;
+			if (e.getAttribute('class').indexOf('text') > -1)
+				y += 3 * fontSize;
+			e.style.top = inPercent(y, hTotal);
+			e.style.left = inPercent(x + w, wTotal);
+			e.style.right = inPercent(wTotal - x - w, wTotal);
+			e.style.bottom = inPercent(hTotal - y - h, hTotal);
+			r = inPercent(x, wTotal);
+		}
 		e.style.transition = null;
 		e.style.visibility = 'visible';
 		return r;
@@ -55,21 +71,21 @@ class ui {
 	static uncoverBox(pagePath) {
 		var page = ui.q(pagePath);
 		var position = page.getAttribute('class');
-		var e = ui.qa(pagePath + ' box');
-		var call = function (e, x) {
+		var boxes = ui.qa(pagePath + ' box');
+		var call = function (box, x) {
 			setTimeout(function () {
 				if (position.indexOf('bottom') > -1)
-					e.style.bottom = x;
+					box.style.bottom = x;
 				else if (position.indexOf('right') > -1)
-					e.style.right = x;
+					box.style.right = x;
 				else if (position.indexOf('top') > -1)
-					e.style.top = x;
+					box.style.top = x;
 				else if (position.indexOf('left') > -1)
-					e.style.left = x;
+					box.style.left = x;
 			}, 10);
 		}
-		for (var i = 0; i < e.length; i++) {
-			ui.on(e[i], 'transitionend', function () {
+		for (var i = 0; i < boxes.length; i++) {
+			ui.on(boxes[i], 'transitionend', function () {
 				var e2;
 				for (var i = 0; i < this.children.length; i++) {
 					if (this.children[i].nodeName == 'COVER') {
@@ -89,7 +105,7 @@ class ui {
 				else if (position.indexOf('left') > -1)
 					e2.style.right = '100%';
 			}, true);
-			call(e[i], e[i].getAttribute('class').indexOf('image') < 0 ? ui.positionBox(e[i], position) : '0px');
+			call(boxes[i], boxes[i].getAttribute('class').indexOf('image') < 0 ? ui.positionBox(boxes[i], position) : '0px');
 		}
 	}
 	static resetPage(page) {
@@ -101,17 +117,19 @@ class ui {
 			e.left = null;
 			e.visibility = null;
 		}
-		ui.q('body>page:nth-child(' + page + ')').style.transition = 'none';
-		ui.q('body>page:nth-child(' + page + ')').style.opacity = 0;
-		ui.q('body>page:nth-child(' + page + ') timer').style.transition = '';
-		ui.q('body>page:nth-child(' + page + ') timer').style.right = '100%';
-		var boxes = ui.qa('body>page:nth-child(' + page + ') box');
-		for (var i = 0; i < boxes.length; i++)
-			reset(boxes[i]);
-		boxes = ui.qa('body>page:nth-child(' + page + ') box cover');
-		for (var i = 0; i < boxes.length; i++)
-			reset(boxes[i]);
-		ui.q('body>page:nth-child(' + page + ')').style.transition = null;
+		ui.q('body>page:nth-child(' + page + ')>div').style.display = 'none';
+		setTimeout(function () {
+			ui.q('body>page:nth-child(' + page + ')').style.opacity = 0;
+			ui.q('body>page:nth-child(' + page + ') timer').style.transition = '';
+			ui.q('body>page:nth-child(' + page + ') timer').style.right = '100%';
+			var boxes = ui.qa('body>page:nth-child(' + page + ') box');
+			for (var i = 0; i < boxes.length; i++)
+				reset(boxes[i]);
+			boxes = ui.qa('body>page:nth-child(' + page + ') box cover');
+			for (var i = 0; i < boxes.length; i++)
+				reset(boxes[i]);
+			ui.q('body>page:nth-child(' + page + ')>div').style.display = null;
+		}, 10);
 	}
 	static switchPage(page, animationStop) {
 		if (ui.page == page || ui.switchingPage)
@@ -133,6 +151,8 @@ class ui {
 			else
 				ui.animation = setTimeout(navigation.next, ui.animationDuration);
 			ui.uncoverBox('body>page:nth-child(' + page + ')');
+			if (pageCurrent)
+				pageCurrent.style.opacity = 0;
 		}, true);
 		if (back) {
 			pageNew.style.transition = 'none';
@@ -140,9 +160,9 @@ class ui {
 			pageCurrent.style.opacity = 0;
 		} else
 			pageNew.style.opacity = 1;
-		var index = ui.qa('index point');
-		for (var i = 0; i < index.length; i++)
-			index[i].setAttribute('class', page == i + 1 ? 'selected' : '');
+		var indexPoints = ui.qa('index point');
+		for (var i = 0; i < indexPoints.length; i++)
+			indexPoints[i].setAttribute('class', page == i + 1 ? 'selected' : '');
 	}
 	static init() {
 		window.onresize = ui.resize;
@@ -162,6 +182,7 @@ class ui {
 		xmlhttp.onreadystatechange = function () {
 			if (xmlhttp.readyState == 4) {
 				if (xmlhttp.status >= 200 && xmlhttp.status < 300) {
+					var firstCall = !ui.q('[l]').innerHTML;
 					var e = ui.qa('[l]'), labels = JSON.parse(xmlhttp.responseText), id, s;
 					for (var i = 0; i < e.length; i++) {
 						id = e[i].getAttribute('l');
@@ -178,7 +199,7 @@ class ui {
 					var page = ui.page;
 					ui.page = 0;
 					ui.resetPage(page);
-					setTimeout(function () { ui.switchPage(page, ui.animation ? false : true); }, 10);
+					setTimeout(function () { ui.switchPage(page, firstCall || ui.animation ? false : true); }, 400);
 				} else
 					alert(xmlhttp.responseText);
 			}
