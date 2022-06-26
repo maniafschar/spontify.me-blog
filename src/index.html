@@ -65,19 +65,22 @@
 		<point onclick="ui.switchPage(3,true)"></point>
 		<point onclick="ui.switchPage(4,true)"></point>
 	</index>
-	<info onclick="navigation.popup('info')" class="pulse">Info
-		<popup>
-			<div l="info"></div>
-			<a href="https://spontify.me" target="_blank">https://spontify.me</a><br /><br /><br />
-			<img src="images/storeGoogle.png"
-				onclick="window.open('https://play.google.com/store/apps/details?id=com.jq.spontifyme')" />
-			<img src="images/storeApple.png" onclick="window.open('https://itunes.apple.com/de/app/id1630967898')" />
-		</popup>
-	</info>
-	<legal onclick="navigation.popup('legal')">Impressum
-		<popup l="legal"></popup>
-	</legal>
-	<language onclick="ui.toggleLanguage()"></language>
+	<links>
+		<legal onclick="navigation.popup('legal')">Impressum
+			<popup l="legal"></popup>
+		</legal>
+		<language onclick="ui.toggleLanguage()"></language>
+		<info onclick="navigation.popup('info')" class="pulse">Info
+			<popup>
+				<div l="info"></div>
+				<a href="https://spontify.me" target="_blank">https://spontify.me</a><br /><br /><br />
+				<img src="images/storeGoogle.png"
+					onclick="window.open('https://play.google.com/store/apps/details?id=com.jq.spontifyme')" />
+				<img src="images/storeApple.png"
+					onclick="window.open('https://itunes.apple.com/de/app/id1630967898')" />
+			</popup>
+		</info>
+	</links>
 </body>
 
 </html>

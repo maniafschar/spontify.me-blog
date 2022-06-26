@@ -176,6 +176,11 @@ page.left box.text cover {
 	background: rgb(203, 186, 204);
 }
 
+page:nth-child(4) ul {
+	display: inline-block;
+	margin-top: 0;
+}
+
 box {
 	overflow: hidden;
 	position: absolute;
@@ -265,26 +270,22 @@ index point:hover:before {
 info,
 legal,
 language {
-	position: absolute;
-	top: 1em;
+	position: relative;
 	color: rgba(255, 255, 255, 0.5);
 	transition: all .4s ease-out;
 	cursor: pointer;
+	padding: 1em;
+	display: inline-block;
 }
 
-info {
-	right: 1em;
-}
-
-language {
-	right: 4em;
-}
-
-legal {
-	right: 6.8em;
+links {
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 info:hover,
+language:hover,
 legal:hover {
 	color: white;
 }
@@ -299,18 +300,18 @@ legal>popup {
 	padding: 2em;
 	border-radius: 0.5em;
 	transition: all .4s ease-out;
-	top: 2em;
 	color: black;
 	line-height: 1.3;
 	min-width: 22em;
 	max-width: 90vw;
-	right: 0;
+	right: 1em;
 }
 
 info>popup {
 	transform-origin: top right;
 	text-align: center;
 	min-width: 50vw;
+	top: 3em;
 }
 
 info>popup img {
@@ -326,6 +327,7 @@ legal>popup {
 	transform-origin: top right;
 	white-space: nowrap;
 	font-size: 0.8em;
+	top: 3.75em;
 }
 
 .pulse {
