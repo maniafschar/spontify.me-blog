@@ -18,6 +18,26 @@ class ui {
 	static on(e, type, f, once) {
 		e.addEventListener(type, f, { capture: type == 'touchstart' ? true : false, passive: true, once: once == true ? true : false });
 	}
+	static swipe(e, exec) {
+		ui.on(e, 'touchstart', function (event) {
+			e.startX = event.changedTouches[0].pageX;
+			e.startY = event.changedTouches[0].pageY;
+			e.startTime = new Date().getTime();
+		});
+		ui.on(e, 'touchend', function (event) {
+			var distX = event.changedTouches[0].pageX - e.startX;
+			var distY = event.changedTouches[0].pageY - e.startY;
+			var elapsedTime = new Date().getTime() - e.startTime;
+			var swipedir = 'none', threshold = 60, restraint = 2000, allowedTime = 1000;
+			if (elapsedTime <= allowedTime) {
+				if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint)
+					swipedir = distX < 0 ? 'left' : 'right';
+				else if (Math.abs(distY) >= threshold && Math.abs(distX) <= restraint)
+					swipedir = distY < 0 ? 'up' : 'down';
+			}
+			exec(swipedir, event);
+		});
+	}
 	static positionBox(e, position) {
 		var x = e.offsetLeft, y, h = e.offsetHeight, w = e.offsetWidth, hTotal = ui.q('body').offsetHeight, wTotal = ui.q('body').offsetWidth, r;
 		var inPercent = function (x, total) {
@@ -166,6 +186,15 @@ class ui {
 	}
 	static init() {
 		window.onresize = ui.resize;
+		var swipe = function (dir) {
+			if (dir == 'left')
+				navigation.next();
+			else if (dir == 'right')
+				navigation.previous();
+		}
+		var e = ui.qa('navigation');
+		for (var i = 0; i < e.length; i++)
+			ui.swipe(e[i], swipe);
 		ui.resize();
 		ui.setLanguage(ui.language);
 	}
