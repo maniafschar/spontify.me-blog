@@ -9,7 +9,9 @@ class navigation {
 		if (e.style.transform.indexOf('1') > 0)
 			e.style.transform = 'scale(0)';
 		e = ui.q(parent + '>popup').style;
-		e.transform = e.transform && e.transform.indexOf('1') > 0 ? 'scale(0)' : 'scale(1)';
+		setTimeout(function () {
+			e.transform = e.transform && e.transform.indexOf('1') > 0 ? 'scale(0)' : 'scale(1)';
+		}, 10);
 	}
 	static next(animationStop) {
 		var i = ui.page + 1;

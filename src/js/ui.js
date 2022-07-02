@@ -39,13 +39,12 @@ class ui {
 		});
 	}
 	static positionBox(e, position) {
-		var x = e.offsetLeft, y, h = e.offsetHeight, w = e.offsetWidth, hTotal = ui.q('body').offsetHeight, wTotal = ui.q('body').offsetWidth, r;
+		var x = e.offsetLeft, y = e.offsetTop, h = e.offsetHeight, w = e.offsetWidth, hTotal = ui.q('body').offsetHeight, wTotal = ui.q('body').offsetWidth, r;
 		var inPercent = function (x, total) {
 			return (x / total * 100) + '%';
 		}
 		var fontSize = parseInt(ui.q('body').style.fontSize);
 		if (position.indexOf('bottom') > -1) {
-			y = hTotal * 0.15;
 			if (e.getAttribute('class').indexOf('text') > -1)
 				y += 3 * fontSize;
 			w = (wTotal - w) / 2;
@@ -55,7 +54,6 @@ class ui {
 			e.style.bottom = inPercent(hTotal - y, hTotal);
 			r = inPercent(hTotal - h - y, hTotal);
 		} else if (position.indexOf('right') > -1) {
-			y = hTotal * 0.3;
 			if (e.getAttribute('class').indexOf('text') > -1)
 				y += 3 * fontSize;
 			e.style.top = inPercent(y, hTotal);
@@ -64,7 +62,6 @@ class ui {
 			e.style.bottom = inPercent(hTotal - y - h, hTotal);
 			r = inPercent(wTotal - x - w, wTotal);
 		} else if (position.indexOf('top') > -1) {
-			y = hTotal * 0.3;
 			if (e.getAttribute('class').indexOf('text') > -1)
 				y += 3 * fontSize;
 			w = (wTotal - w) / 2;
@@ -74,7 +71,6 @@ class ui {
 			e.style.bottom = inPercent(hTotal - y - h, hTotal);
 			r = inPercent(y, hTotal);
 		} else if (position.indexOf('left') > -1) {
-			y = hTotal * 0.3;
 			if (e.getAttribute('class').indexOf('text') > -1)
 				y += 3 * fontSize;
 			e.style.top = inPercent(y, hTotal);
