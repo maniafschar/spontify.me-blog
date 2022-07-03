@@ -110,6 +110,7 @@ body>logo {
 	top: 1.5em;
 	width: 14em;
 	height: 4.5em;
+	cursor: pointer;
 }
 
 page.bottom box.image {
