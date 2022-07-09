@@ -184,9 +184,9 @@ class ui {
 		window.onresize = ui.resize;
 		var swipe = function (dir) {
 			if (dir == 'left')
-				navigation.next();
+				navigation.next(true);
 			else if (dir == 'right')
-				navigation.previous();
+				navigation.previous(true);
 		}
 		var e = ui.qa('navigation');
 		for (var i = 0; i < e.length; i++)
@@ -195,12 +195,23 @@ class ui {
 		ui.setLanguage(ui.language);
 	}
 	static resize() {
-		var x = ui.q('body').offsetWidth / 72;
+		var w = ui.q('body').offsetWidth, x = w / 72;
 		if (x < 14)
 			x = 14;
 		else if (x > 24)
 			x = 24;
 		ui.q('body').style.fontSize = parseInt('' + x) + 'px';
+		var e = ui.qa('body>page'), classes = ['bottom', 'right', 'top', 'left'];
+		for (var i = 0; i < e.length; i++) {
+			e[i].classList.remove('bottom');
+			e[i].classList.remove('right');
+			e[i].classList.remove('top');
+			e[i].classList.remove('left');
+			if (w > 600)
+				e[i].classList.add(classes[i % 4]);
+			else
+				e[i].classList.add('bottom');
+		}
 	}
 	static setLanguage(language) {
 		var xmlhttp = new XMLHttpRequest();

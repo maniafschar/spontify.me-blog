@@ -1,7 +1,7 @@
 {
 	"page1": {
 		"title": "Willkommen zu spontify.me",
-		"text": "Lust auf mehr Spontanität? Zum Beispiel wenn:<ul><li>Deine Freunde keine Zeit haben, Du aber trotzdem etwas unternehmen möchtest</li><li>Du beruflich oder privat in einer fremden Stadt bist</li><li>Du gerne Events organisierst, zu denen sich neue Leute gesellen dürfen</li></ul>"
+		"text": "Lust auf mehr Spontanität? Zum Beispiel wenn:<ul><li>Du etwas unternehmen möchtest, Deine Freunde aber keine Zeit haben</li><li>Du in einer fremden Stadt bist und Gleichgesinnte suchst</li><li>Du gerne Events organisierst, zu denen sich neue Leute gesellen dürfen</li></ul>"
 	},
 	"page2": {
 		"title": "Hier bist Du richtig...",
@@ -9,7 +9,7 @@
 	},
 	"page3": {
 		"title": "Das Matching",
-		"text": "erfolgt über:<ul><li>Attribute, die Du an anderen schätzt</li><li>Alter</li><li>Geschlecht</li><li>Budget</li><li>Locations, die Ihr gemeinsam mögt</li><li>Bluetooth Matching, interessant z.B. auf Konzerten um passende Leute im Umkreis von 10 Metern zu finden</li></ul>"
+		"text": "<ul><li>Attribute, die Du an anderen schätzt</li><li>Alter</li><li>Geschlecht</li><li>Budget</li><li>Locations, die Ihr gemeinsam mögt</li><li>Bluetooth Matching, interessant z.B. auf Konzerten um passende Leute im Umkreis von 10 Metern zu finden</li></ul>"
 	},
 	"page4": {
 		"title": "Wir sind Open...",

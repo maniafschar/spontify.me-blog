@@ -1,7 +1,7 @@
 {
 	"page1": {
 		"title": "Welcome to spontify.me",
-		"text": "Would you like more spontaneity? For example if:<ul><li>If your friends don't have time, but you still want to do something</li><li>You are on a business/private trip to another city</li><li>You enjoy organizing events where new people are welcome to join</li></ul>"
+		"text": "Would you like more spontaneity? For example if:<ul><li>You want to do something, but your friends don't have time</li><li>You are in another city and look for like minded</li><li>You enjoy organizing events where new people are welcome to join</li></ul>"
 	},
 	"page2": {
 		"title": "You're right here...",
@@ -9,7 +9,7 @@
 	},
 	"page3": {
 		"title": "The Matching",
-		"text": "is based on: <ul><li>Attributes that you value in others</li><li>Age</li><li>Gender</li><li>Budget</li ><li>Locations that you like together</li><li>Bluetooth matching, interesting e.g. at concerts to find suitable people within a radius of 10 meters</li></ul>"
+		"text": "<ul><li>Attributes that you value in others</li><li>Age</li><li>Gender</li><li>Budget</li ><li>Locations that you like together</li><li>Bluetooth matching, interesting e.g. at concerts to find suitable people within a radius of 10 meters</li></ul>"
 	},
 	"page4": {
 		"title": "We are Open...",

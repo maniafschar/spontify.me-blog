@@ -60,6 +60,11 @@ body {
 	overflow: hidden;
 	color: white;
 	font-family: Comfortaa, Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 }
 
 body>page {
@@ -72,20 +77,56 @@ body>page {
 	opacity: 0;
 }
 
-body>page.bottom {
+body>page.color1 {
 	background: linear-gradient(rgb(22, 160, 133) 0%, rgb(244, 208, 63) 100%);
 }
 
-body>page.right {
+page.color1 box.image cover {
+	background: rgb(239, 134, 9);
+}
+
+page.color1 box.title cover,
+page.color1 box.text cover {
+	background: rgb(5, 138, 155);
+}
+
+body>page.color2 {
 	background: linear-gradient(140deg, rgb(35, 21, 87) 0%, rgb(68, 16, 122) 28%, rgb(255, 19, 97) 67%, rgb(255, 248, 0) 100%);
 }
 
-body>page.top {
+page.color2 box.image cover {
+	background: rgb(35, 21, 87);
+}
+
+page.color2 box.title cover,
+page.color2 box.text cover {
+	background: rgb(255, 19, 97);
+}
+
+body>page.color3 {
 	background: linear-gradient(90deg, rgb(134, 143, 150) 0%, rgb(89, 97, 100) 100%);
 }
 
-body>page.left {
+page.color3 box.image cover {
+	background: rgb(47, 59, 74);
+}
+
+page.color3 box.title cover,
+page.color3 box.text cover {
+	background: rgb(255, 255, 88);
+}
+
+body>page.color4 {
 	background: linear-gradient(120deg, rgb(203, 186, 204) 0%, rgb(36, 57, 73) 100%);
+}
+
+page.color4 box.image cover {
+	background: rgb(36, 57, 73);
+}
+
+page.color4 box.title cover,
+page.color4 box.text cover {
+	background: rgb(203, 186, 204);
 }
 
 body>page.right timer {
@@ -97,7 +138,7 @@ body>page timer {
 	left: 0;
 	top: 0;
 	right: 100%;
-	height: 0.75em;
+	height: 0.5em;
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -120,10 +161,6 @@ page.bottom box.image {
 	left: 15vw;
 }
 
-page.bottom box.image cover {
-	background: rgb(239, 134, 9);
-}
-
 page.bottom box.title,
 page.bottom box.text {
 	text-align: center;
@@ -134,20 +171,11 @@ page.bottom box.text {
 	max-width: 70vw;
 }
 
-page.bottom box.title cover,
-page.bottom box.text cover {
-	background: rgb(5, 138, 155);
-}
-
 page.right box.image {
 	bottom: 15vh;
 	right: 50vw;
 	top: 15vh;
 	left: 50vw;
-}
-
-page.right box.image cover {
-	background: rgb(35, 21, 87);
 }
 
 page.right box.title,
@@ -161,20 +189,11 @@ page.right box.text {
 	max-width: 35vw;
 }
 
-page.right box.title cover,
-page.right box.text cover {
-	background: rgb(255, 19, 97);
-}
-
 page.top box.image {
 	bottom: 50vh;
 	right: 15vw;
 	top: 50vh;
 	left: 15vw;
-}
-
-page.top box.image cover {
-	background: rgb(47, 59, 74);
 }
 
 page.top box.title,
@@ -187,21 +206,11 @@ page.top box.text {
 	max-width: 70vw;
 }
 
-
-page.top box.title cover,
-page.top box.text cover {
-	background: rgb(255, 255, 88);
-}
-
 page.left box.image {
 	bottom: 15vh;
 	right: 50vw;
 	top: 15vh;
 	left: 50vw;
-}
-
-page.left box.image cover {
-	background: rgb(36, 57, 73);
 }
 
 page.left box.title,
@@ -215,14 +224,9 @@ page.left box.text {
 	max-width: 35vw;
 }
 
-page.left box.title cover,
-page.left box.text cover {
-	background: rgb(203, 186, 204);
-}
-
 page:nth-child(4) ul {
 	display: inline-block;
-	margin-top: 0;
+	margin-bottom: 1em;
 }
 
 box {
@@ -351,13 +355,13 @@ legal>popup {
 	min-width: 22em;
 	max-width: 90vw;
 	right: 1em;
+	top: 3em;
 }
 
 info>popup {
 	transform-origin: top right;
 	text-align: center;
 	min-width: 50vw;
-	top: 3em;
 }
 
 info>popup img {
@@ -372,8 +376,6 @@ info>popup div {
 legal>popup {
 	transform-origin: top right;
 	white-space: nowrap;
-	font-size: 0.8em;
-	top: 3.75em;
 }
 
 .pulse {
@@ -416,11 +418,6 @@ legal>popup {
 	100% {
 		transform: scale(1);
 	}
-}
-
-ul,
-ol {
-	margin: 1em 0;
 }
 
 ul li,
@@ -487,5 +484,9 @@ ul li {
 
 	page.left box.text {
 		max-width: 50vw;
+	}
+
+	legal>popup {
+		margin-right: -6em;
 	}
 }
