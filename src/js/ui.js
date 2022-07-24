@@ -159,13 +159,13 @@ class ui {
 			pageNew.style.transition = null;
 			ui.page = page;
 			clearTimeout(ui.animation);
-			if (animationStop || ui.page == ui.qa('body>page').length)
-				ui.q('body>page:nth-child(' + page + ') timer').style.display = 'none';
-			else {
-				ui.q('body>page:nth-child(' + page + ') timer').style.transition = 'all ' + ui.animationDuration / 1000 + 's linear';
-				ui.q('body>page:nth-child(' + page + ') timer').style.right = 0;
-				ui.animation = setTimeout(navigation.next, ui.animationDuration);
-			}
+			ui.q('body>page:nth-child(' + page + ') timer').style.transition = 'all ' + ui.animationDuration / 1000 + 's linear';
+			ui.q('body>page:nth-child(' + page + ') timer').style.right = 0;
+			ui.animation = setTimeout(animationStop || ui.page == ui.qa('body>page').length ?
+				function () {
+					ui.q('body>page:nth-child(' + page + ') timer').style.display = 'none';
+					navigation.popup('info');
+				} : navigation.next, ui.animationDuration);
 			ui.uncoverBox(page);
 			if (pageCurrent)
 				pageCurrent.style.opacity = 0;
@@ -192,7 +192,7 @@ class ui {
 		for (var i = 0; i < e.length; i++)
 			ui.swipe(e[i], swipe);
 		ui.resize();
-		ui.setLanguage(ui.language);
+		ui.setLanguage((navigator.language || '').toLowerCase().indexOf('en') > -1 ? 'EN' : 'DE');
 	}
 	static resize() {
 		var w = ui.q('body').offsetWidth, x = w / 72;
