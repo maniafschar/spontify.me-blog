@@ -17,7 +17,6 @@
     "babel-loader": "^8.2.2",
     "bable-loader": "0.0.1-security",
     "expose-loader": "^3.0.0",
-    "webpack": "^5.38.1",
     "webpack-cli": "^4.10.0"
   }
 }

@@ -379,6 +379,10 @@ legal>popup {
 	white-space: nowrap;
 }
 
+.highlight {
+	color: rgb(252, 251, 104);
+}
+
 .pulse {
 	animation-name: pulse_animation;
 	animation-duration: 3500ms;

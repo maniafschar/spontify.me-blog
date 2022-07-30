@@ -161,11 +161,14 @@ class ui {
 			clearTimeout(ui.animation);
 			ui.q('body>page:nth-child(' + page + ') timer').style.transition = 'all ' + ui.animationDuration / 1000 + 's linear';
 			ui.q('body>page:nth-child(' + page + ') timer').style.right = 0;
-			ui.animation = setTimeout(animationStop || ui.page == ui.qa('body>page').length ?
-				function () {
-					ui.q('body>page:nth-child(' + page + ') timer').style.display = 'none';
-					navigation.popup('info');
-				} : navigation.next, ui.animationDuration);
+			if (animationStop)
+				ui.q('body>page:nth-child(' + page + ') timer').style.display = 'none';
+			else
+				ui.animation = setTimeout(animationStop || ui.page == ui.qa('body>page').length ?
+					function () {
+						ui.q('body>page:nth-child(' + page + ') timer').style.display = 'none';
+						navigation.popup('info');
+					} : navigation.next, ui.animationDuration);
 			ui.uncoverBox(page);
 			if (pageCurrent)
 				pageCurrent.style.opacity = 0;

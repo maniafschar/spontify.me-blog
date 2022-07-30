@@ -11,7 +11,7 @@ class navigation {
 		e = ui.q(parent + '>popup').style;
 		setTimeout(function () {
 			e.transform = e.transform && e.transform.indexOf('1') > 0 ? 'scale(0)' : 'scale(1)';
-		}, 10);
+		}, 100);
 	}
 	static next(animationStop) {
 		var i = ui.page + 1;
