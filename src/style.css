@@ -164,7 +164,7 @@ page.bottom box.image {
 page.bottom box.title,
 page.bottom box.text {
 	text-align: center;
-	top: 10vh;
+	top: 7.5vh;
 }
 
 page.bottom box.text {
@@ -172,21 +172,21 @@ page.bottom box.text {
 }
 
 page.right box.image {
-	bottom: 15vh;
+	bottom: 10vh;
 	right: 50vw;
-	top: 15vh;
+	top: 10vh;
 	left: 50vw;
 }
 
 page.right box.title,
 page.right box.text {
-	left: 15vw;
+	left: 5vw;
 	text-align: left;
-	top: 30vh;
+	top: 20vh;
 }
 
 page.right box.text {
-	max-width: 35vw;
+	max-width: 45vw;
 }
 
 page.top box.image {
@@ -207,21 +207,21 @@ page.top box.text {
 }
 
 page.left box.image {
-	bottom: 15vh;
+	bottom: 10vh;
 	right: 50vw;
-	top: 15vh;
+	top: 10vh;
 	left: 50vw;
 }
 
 page.left box.title,
 page.left box.text {
-	right: 15vw;
+	right: 5vw;
 	text-align: right;
-	top: 30vh;
+	top: 20vh;
 }
 
 page.left box.text {
-	max-width: 35vw;
+	max-width: 45vw;
 }
 
 page:nth-child(4) ul {

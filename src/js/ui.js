@@ -125,6 +125,14 @@ class ui {
 			animate(boxes[i], boxes[i].getAttribute('class').indexOf('image') < 0 ? ui.positionBox(boxes[i], position) : '0px');
 		}
 	}
+	static reset() {
+		if (ui.page > 0) {
+			var p = ui.page;
+			ui.page = p - 1;
+			ui.resetPage(p);
+			setTimeout(function () { ui.switchPage(p) }, 500);
+		}
+	}
 	static resetPage(page) {
 		var reset = function (e) {
 			e = e.style;
@@ -198,23 +206,20 @@ class ui {
 		ui.setLanguage((navigator.language || '').toLowerCase().indexOf('en') > -1 ? 'EN' : 'DE');
 	}
 	static resize() {
-		var w = ui.q('body').offsetWidth, x = w / 72;
-		if (x < 14)
-			x = 14;
+		var e = ui.q('body'), w = Math.max(e.offsetWidth, e.offsetHeight), x = w / 64 + 0.5;
+		if (x < 11)
+			x = 11;
 		else if (x > 24)
 			x = 24;
 		ui.q('body').style.fontSize = parseInt('' + x) + 'px';
-		var e = ui.qa('body>page'), classes = ['bottom', 'right', 'top', 'left'];
+		e = ui.qa('body>page');
+		w = ui.q('body').offsetWidth;
 		for (var i = 0; i < e.length; i++) {
-			e[i].classList.remove('bottom');
 			e[i].classList.remove('right');
-			e[i].classList.remove('top');
-			e[i].classList.remove('left');
-			if (w > 600)
-				e[i].classList.add(classes[i % 4]);
-			else
-				e[i].classList.add('bottom');
+			e[i].classList.remove('bottom');
+			e[i].classList.add(w > 600 ? 'right' : 'bottom');
 		}
+		ui.reset();
 	}
 	static setLanguage(language) {
 		var xmlhttp = new XMLHttpRequest();
@@ -235,10 +240,7 @@ class ui {
 					}
 					ui.language = language;
 					ui.q('language').innerHTML = language == 'DE' ? 'EN' : 'DE';
-					var page = ui.page;
-					ui.page = 0;
-					ui.resetPage(page);
-					setTimeout(function () { ui.switchPage(page, firstCall || ui.animation ? false : true); }, 400);
+					ui.reset();
 				} else
 					alert(xmlhttp.responseText);
 			}
