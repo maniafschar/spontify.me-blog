@@ -9,7 +9,7 @@
 	},
 	"page3": {
 		"title": "The Matching",
-		"text": "<ul><li>Attributes that you value in others</li><li>Age</li><li>Gender</li><li>Budget</li ><li>Locations that you like together</li><li><span class=\"highlight\">Bluetooth matching</span>, interesting e.g. at concerts to find suitable people within a radius of 10 meters</li></ul>"
+		"text": "<ul><li>Attributes that you value in others</li><li>Age, Gender, Budget</li ><li>Locations that you like together</li><li><span class=\"highlight\">Bluetooth matching</span>, interesting e.g. at concerts to find suitable people within a radius of 10 meters</li></ul>"
 	},
 	"page4": {
 		"title": "We are Open...",
