@@ -250,6 +250,7 @@ box.title {
 box.text {
 	visibility: hidden;
 	line-height: 1.8;
+	font-size: 1em;
 	padding: 0.8em;
 }
 
@@ -377,6 +378,13 @@ info>popup div {
 legal>popup {
 	transform-origin: top right;
 	white-space: nowrap;
+}
+
+debug {
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0.3;
 }
 
 .highlight {
