@@ -364,11 +364,11 @@ legal>popup {
 info>popup {
 	transform-origin: top right;
 	text-align: center;
-	min-width: 50vw;
+	min-width: 60vw;
 }
 
 info>popup img {
-	margin: 0 1em;
+	margin: 0 0.5em;
 	height: 3em;
 }
 

@@ -57,7 +57,7 @@ html {
 }
 
 body {
-	overflow: hidden;
+	overflow: auto;
 	color: white;
 	font-family: Comfortaa, Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	position: absolute;
@@ -65,10 +65,50 @@ body {
 	right: 0;
 	top: 0;
 	bottom: 0;
+	text-align: center;
+	background: linear-gradient(140deg, rgb(35, 21, 87) 0%, rgb(68, 16, 122) 28%, rgb(255, 19, 97) 67%, rgb(255, 248, 0) 100%);
 }
 
+header {
+	text-align: right;
+	width: 40em;
+	display: inline-block;
+	margin-top: 1em;
+}
+
+block,
 chart {
-	display: block;
+	display: inline-block;
 	position: relative;
-	height: 20em;
+	background: rgba(255, 255, 255, 0.9);
+	padding: 1em;
+	border-radius: 1em;
+	margin: 1em;
+	box-shadow: 0 0 2em rgb(0 0 0 / 30%);
+	width: 40em;
+	color: black;
+	line-height: 1.8;
+}
+
+language {
+	position: relative;
+	color: rgba(255, 255, 255, 0.5);
+	transition: all .4s ease-out;
+	cursor: pointer;
+	padding: 1em;
+	display: inline-block;
+}
+
+language:hover,
+legal:hover {
+	color: white;
+}
+
+ul {
+	margin: 1em;
+}
+
+ul li {
+	list-style-type: none;
+	font-weight: bold;
 }

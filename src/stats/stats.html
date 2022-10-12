@@ -28,8 +28,18 @@
 	<meta property="og:image" content="https://blog.spontify.me/images/page1.jpg" />
 </head>
 
-<body onload="ui.onload()">
-	<chart id="no1"></chart>
+<body onload="ui.init()">
+	<div>
+		<header>
+			<language onclick="ui.setLanguage()"></language>
+		</header>
+		<br />
+		<block l="blockNo1"></block>
+		<br />
+		<chart class="no1"></chart>
+		<br />
+		<block l="blockNo5"></block>
+	</div>
 </body>
 
 </html>

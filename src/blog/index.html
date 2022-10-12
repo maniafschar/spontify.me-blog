@@ -83,10 +83,7 @@
 		<point onclick="ui.switchPage(4,true)"></point>
 	</index>
 	<links>
-		<legal onclick="navigation.popup('legal')">
-			<span l="legalButton"></span>
-			<popup l="legal"></popup>
-		</legal>
+		<language onclick="ui.toggleLanguage()"></language>
 		<stats onclick="window.open('stats.html', 'smStats');">
 			<span l="statsButton"></span>
 		</stats>
@@ -100,7 +97,10 @@
 					onclick="window.open('https://itunes.apple.com/de/app/id1630967898')" />
 			</popup>
 		</info>
-		<language onclick="ui.toggleLanguage()"></language>
+		<legal onclick="navigation.popup('legal')">
+			<span l="legalButton"></span>
+			<popup l="legal"></popup>
+		</legal>
 		<debug></debug>
 	</links>
 </body>
