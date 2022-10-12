@@ -1,0 +1,74 @@
+* {
+	-webkit-overflow-scrolling: touch;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-moz-tap-highlight-color: rgba(0, 0, 0, 0);
+	-moz-user-select: -moz-none;
+	-webkit-touch-callout: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizelegibility;
+	margin: 0;
+	padding: 0;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+@-moz-document url-prefix(http:),
+url-prefix(https:) {
+
+	scrollbar {
+		-moz-appearance: none !important;
+	}
+
+	scrollbarbutton {
+		-moz-appearance: none !important;
+	}
+
+	thumb {
+		-moz-appearance: none !important;
+	}
+
+	scrollcorner {
+		-moz-appearance: none !important;
+		resize: both;
+	}
+
+	scrollbar[orient="vertical"] {
+		color: silver;
+	}
+}
+
+
+html {
+	overflow: hidden;
+}
+
+@font-face {
+	font-family: 'Comfortaa';
+	font-style: regular;
+	font-weight: 400;
+	src: url(Comfortaa-Regular.ttf) format('truetype');
+}
+
+body {
+	overflow: hidden;
+	color: white;
+	font-family: Comfortaa, Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+chart {
+	display: block;
+	position: relative;
+	height: 20em;
+}

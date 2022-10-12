@@ -1,17 +1,27 @@
 const path = require('path');
 
 module.exports = {
-	entry: './src/js/main.js',
+	entry: {
+		main: './src/blog/js/main.js',
+		stats: './src/stats/js/main.js'
+	},
 	mode: 'production',
 	output: {
 		globalObject: 'this',
-		filename: 'js/main.js',
+		filename: 'js/[name].js',
 		path: path.resolve(__dirname, 'dist'),
 	},
 	optimization: {
 		minimize: false
 	},
 	target: ['web', 'es5'],
+	devServer: {
+		static: {
+			directory: path.join(__dirname, 'dist')
+		},
+		compress: false,
+		port: 9000
+	},
 	module: {
 		rules: [
 			{
