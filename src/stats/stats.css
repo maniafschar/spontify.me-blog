@@ -85,9 +85,9 @@ chart {
 	display: inline-block;
 	position: relative;
 	background: rgba(255, 255, 255, 0.9);
-	padding: 1em;
+	padding: 1.5em;
 	border-radius: 1em;
-	margin: 1em;
+	margin: 1em 0;
 	box-shadow: 0 0 2em rgb(0 0 0 / 30%);
 	width: 40em;
 	color: black;
@@ -115,4 +115,18 @@ ul {
 ul li {
 	list-style-type: none;
 	font-weight: bold;
+}
+
+@media (max-width:960px) {
+
+	block,
+	chart {
+		border-radius: 0;
+		box-shadow: none;
+		width: 100%;
+	}
+
+	header {
+		width: 100%;
+	}
 }

@@ -1,3 +1,15 @@
 {
-	"blockNo1": "The app is available in the Apple and Play Store, but also on the web at"
+	"blockIntro": "Here are some few statistics of our still young app. We placed the first advertisement on <b>September 1, 2022</b> in the Munich subway, since then we have been recording activities here on spontify.me. Our focus is Munich until the end of 2022, we will be <ul><li>in the subway</li><li>on the radio</li><li>and on Google</li></ul>advertising switch. The following statistics are updated hourly and give an insight into our growth. Feel free to check back often and let's build a strong platform for networking together.<br/><br/>The first graphic shows you the current gender ratio . We expressly point out again that this is not a dating app. Please stick to it, no sex requests, no harassment.",
+	"blockAge": "We show the stats because we want to work with you to create a cool app for users where the focus is on meeting people, not hanging out in the app for hours. These stats along with our disclosed <a href=\"https://github.com/maniafschar\" target=\"sm_source\">Source Code</a> allows developers to verify that we are openly and honestly developing the app with you here. Your feedback is extremely important to us, tell us what bothers you or what is still missing.<br/><br/>Now a statistic on the age distribution. Our goal is to become an app for every age group.",
+	"blockLog": "The following shows server response times in milliseconds, actually only interesting for IT nerds. If you have any questions about this, Sponti Support in the app will be happy to put you in touch with one of the developers.",
+	"blockFooter": "Do you have any questions?<br/>Ask spontaneous support in the app, they will answer you fairly quickly.",
+	"until": "until",
+	"from": "from",
+	"noData": "Unspecified",
+	"female": "Women",
+	"male": "Men",
+	"divers": "Diverse",
+	"total": "Total",
+	"verified": "Verified",
+	"withImage": "With Image"
 }

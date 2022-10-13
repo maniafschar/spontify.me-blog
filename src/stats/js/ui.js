@@ -3,6 +3,9 @@ export { ui };
 class ui {
 	static labels;
 	static language;
+	static chartAge;
+	static chartGender;
+	static chartLog;
 	static init() {
 		window.onresize = ui.resize;
 		ui.language = (navigator.language || '').toLowerCase().indexOf('en') > -1 ? 'DE' : 'EN';
@@ -35,7 +38,11 @@ class ui {
 			verified[i] = (parseInt(verified[i] * 10 + 0.5) / 10);
 			withImage[i] = (parseInt(withImage[i] * 10 + 0.5) / 10);
 		}
-		new ApexCharts(ui.q("chart.gender"), {
+		if (ui.chartGender) {
+			ui.chartGender.destroy();
+			ui.q("chart.gender").innerHTML = '';
+		}
+		ui.chartGender = new ApexCharts(ui.q("chart.gender"), {
 			chart: {
 				type: 'bar',
 				toolbar: {
@@ -75,7 +82,8 @@ class ui {
 				data: withImage
 			}],
 			labels: [ui.labels['female'], ui.labels['male'], ui.labels['divers'], ui.labels['noData']]
-		}).render();
+		});
+		ui.chartGender.render();
 	}
 	static initChartAge(data) {
 		var index = {}, female = [0, 0, 0, 0, 0, 0, 0], male = [0, 0, 0, 0, 0, 0, 0], divers = [0, 0, 0, 0, 0, 0, 0], noData = [0, 0, 0, 0, 0, 0, 0], genderMap = [2, 1, 3, null];
@@ -106,7 +114,11 @@ class ui {
 			divers[i] = parseInt(0.5 + divers[i]);
 			noData[i] = parseInt(0.5 + noData[i]);
 		}
-		new ApexCharts(ui.q("chart.age"), {
+		if (ui.chartAge) {
+			ui.chartAge.destroy();
+			ui.q("chart.age").innerHTML = '';
+		}
+		ui.chartAge = new ApexCharts(ui.q("chart.age"), {
 			chart: {
 				type: 'bar',
 				toolbar: {
@@ -142,9 +154,58 @@ class ui {
 				data: noData
 			}],
 			labels: [ui.labels['until'] + ' 20', '20-30', '30-40', '40-50', '50-60', ui.labels['from'] + ' 60', ui.labels['noData']]
-		}).render();
+		});
+		ui.chartAge.render();
 	}
 	static initChartLog(data) {
+		var index = {}, log = [], total = 0;
+		for (var i = 0; i < data[0].length; i++)
+			index[data[0][i]] = i;
+		for (var i = 0; i < 20; i++)
+			log.push({ label: (i + 1) * 10, value: 0 });
+		for (var i = 1; i < data.length; i++) {
+			var c = data[i][index['_count']];
+			if (data[i][index['_time']] > log[log.length - 1].label)
+				log[log.length - 1].value += c;
+			else {
+				for (var i2 = 0; i2 < log.length; i2++) {
+					if (data[i][index['_time']] <= log[i2].label) {
+						log[i2].value += c;
+						break;
+					}
+				}
+			}
+			total += c;
+		}
+		var labels = [], values = [];
+		for (var i = 0; i < log.length; i++) {
+			values.push(parseInt((log[i].value / total) * 100));
+			labels.push(log[i].label * 10);
+		}
+		if (ui.chartLog) {
+			ui.chartLog.destroy();
+			ui.q("chart.log").innerHTML = '';
+		}
+		ui.chartLog = new ApexCharts(ui.q("chart.log"), {
+			chart: {
+				type: 'line',
+				toolbar: {
+					show: false
+				}
+			},
+			tooltip: {
+				y: {
+					formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
+						return value + '%';
+					}
+				}
+			},
+			series: [{
+				data: values
+			}],
+			labels: labels
+		});
+		ui.chartLog.render();
 	}
 	static q(path) {
 		return document.querySelector(path);
@@ -181,9 +242,9 @@ class ui {
 		xmlhttp.send();
 	}
 	static resize() {
-		var x = Math.min(screen.width, screen.height) / 53;
-		if (x < 11)
-			x = 11;
+		var x = Math.max(window.innerWidth, window.innerHeight) / 53;
+		if (x < 12)
+			x = 12;
 		else if (x > 24)
 			x = 24;
 		ui.q('body').style.fontSize = parseInt('' + x) + 'px';
