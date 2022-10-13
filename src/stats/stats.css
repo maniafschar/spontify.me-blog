@@ -74,6 +74,14 @@ header {
 	width: 40em;
 	display: inline-block;
 	margin-top: 1em;
+	position: relative;
+}
+
+update {
+	position: absolute;
+	left: 0;
+	text-align: left;
+	padding: 1em;
 }
 
 a {

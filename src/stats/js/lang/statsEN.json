@@ -11,5 +11,7 @@
 	"divers": "Diverse",
 	"total": "Total",
 	"verified": "Verified",
-	"withImage": "With Image"
+	"withImage": "With Image",
+	"responseTime": "Response Time",
+	"headerUpdate": "Last update: {date}"
 }

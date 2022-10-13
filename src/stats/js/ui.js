@@ -13,6 +13,8 @@ class ui {
 		ui.resize();
 	}
 	static initCharts(data) {
+		var d = new Date(data.update);
+		ui.q('update').innerHTML = ui.labels.headerUpdate.replace('{date}', d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes())
 		ui.initChartGender(data.user);
 		ui.initChartAge(data.user);
 		ui.initChartLog(data.log);
@@ -70,18 +72,18 @@ class ui {
 				}
 			},
 			series: [{
-				name: ui.labels['total'],
+				name: ui.labels.total,
 				data: total
 			},
 			{
-				name: ui.labels['verified'],
+				name: ui.labels.verified,
 				data: verified
 			},
 			{
-				name: ui.labels['withImage'],
+				name: ui.labels.withImage,
 				data: withImage
 			}],
-			labels: [ui.labels['female'], ui.labels['male'], ui.labels['divers'], ui.labels['noData']]
+			labels: [ui.labels.female, ui.labels.male, ui.labels.divers, ui.labels.noData]
 		});
 		ui.chartGender.render();
 	}
@@ -138,22 +140,22 @@ class ui {
 				}
 			},
 			series: [{
-				name: ui.labels['female'],
+				name: ui.labels.female,
 				data: female
 			},
 			{
-				name: ui.labels['male'],
+				name: ui.labels.male,
 				data: male
 			},
 			{
-				name: ui.labels['divers'],
+				name: ui.labels.divers,
 				data: divers
 			},
 			{
-				name: ui.labels['noData'],
+				name: ui.labels.noData,
 				data: noData
 			}],
-			labels: [ui.labels['until'] + ' 20', '20-30', '30-40', '40-50', '50-60', ui.labels['from'] + ' 60', ui.labels['noData']]
+			labels: [ui.labels.until + ' 20', '20-30', '30-40', '40-50', '50-60', ui.labels.from + ' 60', ui.labels.noData]
 		});
 		ui.chartAge.render();
 	}
@@ -201,6 +203,7 @@ class ui {
 				}
 			},
 			series: [{
+				name: ui.labels.responseTime,
 				data: values
 			}],
 			labels: labels
