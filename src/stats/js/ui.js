@@ -14,7 +14,7 @@ class ui {
 	}
 	static initCharts(data) {
 		var d = new Date(data.update);
-		ui.q('update').innerHTML = ui.labels.headerUpdate.replace('{date}', d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes())
+		ui.q('update').innerHTML = ui.labels.headerUpdate.replace('{date}', d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes())
 		ui.initChartGender(data.user);
 		ui.initChartAge(data.user);
 		ui.initChartLog(data.log);
@@ -164,7 +164,7 @@ class ui {
 		for (var i = 0; i < data[0].length; i++)
 			index[data[0][i]] = i;
 		for (var i = 0; i < 20; i++)
-			log.push({ label: (i + 1) * 10, value: 0 });
+			log.push({ label: i + 1, value: 0 });
 		for (var i = 1; i < data.length; i++) {
 			var c = data[i][index['_count']];
 			if (data[i][index['_time']] > log[log.length - 1].label)
