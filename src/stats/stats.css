@@ -76,6 +76,10 @@ header {
 	margin-top: 1em;
 }
 
+a {
+	text-decoration: none;
+}
+
 block,
 chart {
 	display: inline-block;
