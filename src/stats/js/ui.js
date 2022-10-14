@@ -181,7 +181,7 @@ class ui {
 		}
 		var labels = [], values = [];
 		for (var i = 0; i < log.length; i++) {
-			values.push(parseInt((log[i].value / total) * 100));
+			values.push(parseInt(((log[i].value + 0.5) / total) * 100));
 			labels.push(log[i].label * 10);
 		}
 		if (ui.chartLog) {
@@ -251,5 +251,13 @@ class ui {
 		else if (x > 24)
 			x = 24;
 		ui.q('body').style.fontSize = parseInt('' + x) + 'px';
+	}
+
+	static popup(parent) {
+		ui.q(parent).setAttribute('class', '');
+		var e = ui.q(parent + '>popup').style;
+		setTimeout(function () {
+			e.transform = e.transform && e.transform.indexOf('1') > 0 ? 'scale(0)' : 'scale(1)';
+		}, 100);
 	}
 }

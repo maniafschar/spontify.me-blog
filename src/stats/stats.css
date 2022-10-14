@@ -138,3 +138,30 @@ ul li {
 		width: 100%;
 	}
 }
+
+legal {
+	display: block;
+	position: relative;
+	margin-bottom: 5em;
+}
+
+legal>span {
+	cursor: pointer;
+}
+
+popup {
+	transform: scale(0);
+	transform-origin: left bottom;
+	box-shadow: 0 0 5em rgba(0, 0, 0, 0.3);
+	background-color: rgba(255, 255, 255, 0.9);
+	position: absolute;
+	display: inline-block;
+	padding: 2em;
+	border-radius: 0.5em;
+	transition: all .4s ease-out;
+	color: black;
+	line-height: 1.3;
+	min-width: 22em;
+	max-width: 90vw;
+	bottom: 3em;
+}

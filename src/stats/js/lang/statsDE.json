@@ -1,8 +1,8 @@
 {
-	"blockIntro": "Hier ein paar Statistiken unserer noch jungen App. Die erste Werbung haben wir am <b>1. September 2022</b> in der U-Bahn München geschaltet, seit dem erfassen wir hier Aktivitäten auf spontify.me. Unser Fokus ist bis Ende 2022 München, wir werden insgesamt<ul><li>in der U-Bahn</li><li>im Radio</li><li>und auf Google</li></ul>Werbung schalten. Die folgenden Statistiken werden stündlich aktualisiert und geben eine Einblick auf unser Wachstum. Schaut gerne immer wieder rein und lasst uns gemeinsam eine starke Plattform zum vernetzen aufbauen.<br/><br/>Die erste Grafik zeigt Euch des aktuelle Verhältnis der Geschlechter. Wir weisen ausdrücklich nochmal darauf hin, dass dies keine Dating App ist. Bitte haltet Euch daran, keine Sexanfragen, keine Belästigungen.",
-	"blockAge": "Wir zeigen die Statistiken, weil wir gemeinsam mit Euch eine coole App für Nutzer schaffen wollen, in der der Fokus auf das Treffen der Menschen liegt, nicht auf das stundenlange abhängen in der App. Diese Statistiken zusammen mit unserem offen gelegten <a href=\"https://github.com/maniafschar\" target=\"sm_source\">Source Code</a> ermöglicht es Entwicklern zu verifizieren, dass wir hier offen und ehrlich die App mit Euch zusammen entwickeln. Euer Feedback ist uns enorm wichtig, schreibt uns was Euch stört oder noch fehlt.<br/><br/>Nun eine Statistik zur Altersverteilung. Unser Ziel ist es, eine App für jede Altersgruppe zu werden.",
+	"blockIntro": "Hier ein paar Statistiken unserer noch jungen App. Die erste Werbung haben wir am <b>1. September 2022</b> in der U-Bahn München geschaltet, seit dem erfassen wir hier Aktivitäten auf spontify.me. Unser Fokus ist bis Ende 2022 München, wir werden insgesamt<ul><li>in der U-Bahn</li><li>im Radio</li><li>und auf Google</li></ul>Werbung schalten. Die folgenden Statistiken werden stündlich aktualisiert und geben eine Einblick auf unsere Daten. Schaut gerne immer wieder rein und lasst uns <b>gemeinsam</b> eine starke Plattform zum vernetzen aufbauen.<br/><br/>Die erste Grafik zeigt Euch des aktuelle Verhältnis der Geschlechter. Wir weisen ausdrücklich nochmal darauf hin, dass dies keine Dating App ist. Bitte haltet Euch daran, keine Sexanfragen, keine Belästigungen.",
+	"blockAge": "Wir zeigen die Statistiken, weil wir gemeinsam mit Euch eine coole App für Nutzer schaffen wollen, in der der Fokus auf das Treffen der Menschen liegt, nicht auf das stundenlange Abhängen in der App. Mit diesen Statistiken zusammen mit dem offen gelegten <a href=\"https://github.com/maniafschar\" target=\"sm_source\">Source Code</a> möchten wir für maximale Transparenz sorgen. Euer Feedback ist uns enorm wichtig, schreibt Sponti Support was Euch stört oder noch fehlt.<br/><br/>Nun eine Statistik zur Altersverteilung. Unser Ziel ist es, eine App für jede Altersgruppe zu werden.",
 	"blockLog": "Im folgenden seht Ihr die Server Antwortzeiten in Millisekunden seit 1.9.2022, eigentlich nur interessant für IT Nerds. Sollte jemnad auch hierzu Fragen haben, Sponti Support in der App stellt Euch gerne den Kontakt zu einem der Entwickler her.",
-	"blockFooter": "Hast Du noch Fragen?<br/>Frag Sponti Support in der App, sie antwortet Euch recht zeitnah.",
+	"blockFooter": "Hast Du noch Fragen?<br/>Frag Sponti Support in der App, sie antwortet Euch recht zeitnah.<br/><br/>Hier geht's zum Login:<br/><a href=\"https://spontify.me\">https://spontify.me</a>",
 	"until": "bis",
 	"from": "ab",
 	"noData": "ohne Angabe",
@@ -13,5 +13,7 @@
 	"verified": "verifiziert",
 	"withImage": "mit Bild",
 	"responseTime": "Antwortzeit",
-	"headerUpdate": "Letztes Update: {date}"
+	"headerUpdate": "Letztes Update: {date}",
+	"legalButton": "Impressum",
+	"legal": "JNet Quality Consulting GmbH<br>Whistlerweg 27b<br>81479 München<br>Deutschland<br>E-Mail: spontify.me@jq-consulting.de<br>Internet: https://spontify.me<br><br>Geschäftsführer: Mani Afschar Yazdi<br>Registergericht: Amtsgericht München<br>Registernummer: HRB 135182<br><br>© 2022 JNet Quality Consulting GmbH<br>Alle Rechte vorbehalten"
 }
