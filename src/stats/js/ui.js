@@ -182,7 +182,7 @@ class ui {
 		var labels = [], values = [];
 		for (var i = 0; i < log.length; i++) {
 			values.push(parseInt(((log[i].value + 0.5) / total) * 100));
-			labels.push(log[i].label * 10);
+			labels.push((i == log.length - 1 ? ui.labels.from + ' ' : '') + (log[i].label * 10));
 		}
 		if (ui.chartLog) {
 			ui.chartLog.destroy();
