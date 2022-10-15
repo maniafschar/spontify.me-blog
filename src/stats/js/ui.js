@@ -40,10 +40,8 @@ class ui {
 			verified[i] = (parseInt(verified[i] * 10 + 0.5) / 10);
 			withImage[i] = (parseInt(withImage[i] * 10 + 0.5) / 10);
 		}
-		if (ui.chartGender) {
+		if (ui.chartGender)
 			ui.chartGender.destroy();
-			ui.q("chart.gender").innerHTML = '';
-		}
 		ui.chartGender = new ApexCharts(ui.q("chart.gender"), {
 			chart: {
 				type: 'bar',
@@ -85,7 +83,10 @@ class ui {
 			}],
 			labels: [ui.labels.female, ui.labels.male, ui.labels.divers, ui.labels.noData]
 		});
-		ui.chartGender.render();
+		setTimeout(function () {
+			ui.q("chart.gender").innerHTML = '';
+			ui.chartGender.render();
+		}, 400);
 	}
 	static initChartAge(data) {
 		var index = {}, female = [0, 0, 0, 0, 0, 0, 0], male = [0, 0, 0, 0, 0, 0, 0], divers = [0, 0, 0, 0, 0, 0, 0], noData = [0, 0, 0, 0, 0, 0, 0], genderMap = [2, 1, 3, null];
@@ -157,7 +158,10 @@ class ui {
 			}],
 			labels: [ui.labels.until + ' 20', '20-30', '30-40', '40-50', '50-60', ui.labels.from + ' 60', ui.labels.noData]
 		});
-		ui.chartAge.render();
+		setTimeout(function () {
+			ui.q("chart.age").innerHTML = '';
+			ui.chartAge.render();
+		}, 400);
 	}
 	static initChartLog(data) {
 		var index = {}, log = [], total = 0;
@@ -208,7 +212,10 @@ class ui {
 			}],
 			labels: labels
 		});
-		ui.chartLog.render();
+		setTimeout(function () {
+			ui.q("chart.log").innerHTML = '';
+			ui.chartLog.render();
+		}, 400);
 	}
 	static q(path) {
 		return document.querySelector(path);
