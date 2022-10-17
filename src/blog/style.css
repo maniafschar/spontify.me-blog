@@ -372,10 +372,6 @@ info>popup img {
 	height: 3em;
 }
 
-info>popup div {
-	margin-bottom: 1.5em;
-}
-
 legal>popup {
 	transform-origin: top right;
 	white-space: nowrap;
