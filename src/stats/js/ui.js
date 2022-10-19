@@ -18,6 +18,10 @@ class ui {
 		ui.initChartGender(data.user);
 		ui.initChartAge(data.user);
 		ui.initChartLog(data.log);
+		if (location.hash && ui.q('[l="block' + location.hash.substring(1) + '"]'))
+			setTimeout(function () {
+				ui.q('body').scrollTo(0, ui.q('[l="block' + location.hash.substring(1) + '"]').offsetTop);
+			}, 1000);
 	}
 	static initChartGender(data) {
 		var index = {}, total = [0, 0, 0, 0], verified = [0, 0, 0, 0], withImage = [0, 0, 0, 0], genderMap = [2, 1, 3, null];
