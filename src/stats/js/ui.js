@@ -4,6 +4,8 @@ class ui {
 	static labels;
 	static language;
 	static chartAge;
+	static chartApi;
+	static chartApiData;
 	static chartGender;
 	static chartLog;
 	static init() {
@@ -18,6 +20,7 @@ class ui {
 		ui.initChartGender(data.user);
 		ui.initChartAge(data.user);
 		ui.initChartLog(data.log);
+		ui.initChartApi(data.api);
 		if (location.hash && ui.q('[l="block' + location.hash.substring(1) + '"]'))
 			setTimeout(function () {
 				ui.q('body').scrollTo(0, ui.q('[l="block' + location.hash.substring(1) + '"]').offsetTop);
@@ -167,30 +170,56 @@ class ui {
 			ui.chartAge.render();
 		}, 400);
 	}
-	static initChartLog(data) {
-		var index = {}, log = [], total = 0;
+	static initChartApi(data) {
+		var index = {};
 		for (var i = 0; i < data[0].length; i++)
 			index[data[0][i]] = i;
-		for (var i = 0; i < 20; i++)
-			log.push({ label: i + 1, value: 0 });
+		ui.chartApiData = [];
+		var labels = [], values = [];
 		for (var i = 1; i < data.length; i++) {
-			var c = data[i][index['_count']];
-			if (data[i][index['_time']] > log[log.length - 1].label)
-				log[log.length - 1].value += c;
-			else {
-				for (var i2 = 0; i2 < log.length; i2++) {
-					if (data[i][index['_time']] <= log[i2].label) {
-						log[i2].value += c;
-						break;
+			if (data[i][index['_percentage']] >= 0.005) {
+				values.push(parseInt('' + (data[i][index['_percentage']] * 100 + 0.5)));
+				labels.push(data[i][index['_label']]);
+				ui.chartApiData.push(data[i]);
+			}
+		}
+		if (ui.chartApi) {
+			ui.chartApi.destroy();
+			ui.q("chart.api").innerHTML = '';
+		}
+		ui.chartApi = new ApexCharts(ui.q("chart.api"), {
+			chart: {
+				type: 'bar',
+				toolbar: {
+					show: false
+				}
+			},
+			tooltip: {
+				y: {
+					formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
+						return ui.labels.calls.replace('{0}', value).replace('{1}', parseInt(ui.chartApiData[dataPointIndex][index['_time']] + 0.5));
 					}
 				}
-			}
-			total += c;
-		}
+			},
+			series: [{
+				name: '',
+				data: values
+			}],
+			labels: labels
+		});
+		setTimeout(function () {
+			ui.q("chart.api").innerHTML = '';
+			ui.chartApi.render();
+		}, 400);
+	}
+	static initChartLog(data) {
+		var index = {};
+		for (var i = 0; i < data[0].length; i++)
+			index[data[0][i]] = i;
 		var labels = [], values = [];
-		for (var i = 0; i < log.length; i++) {
-			values.push(parseInt(((log[i].value + 0.5) / total) * 100));
-			labels.push((i == log.length - 1 ? ui.labels.from + ' ' : '') + (log[i].label * 10));
+		for (var i = 1; i < data.length; i++) {
+			values.push(parseInt('' + (data[i][index['_count']] * 100 + 0.5)));
+			labels.push((i == data.length - 1 ? ui.labels.from + ' ' : '') + (data[i][index['_time']] * 10));
 		}
 		if (ui.chartLog) {
 			ui.chartLog.destroy();
