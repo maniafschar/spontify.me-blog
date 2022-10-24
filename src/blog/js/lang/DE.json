@@ -19,5 +19,5 @@
 	"legal": "JNet Quality Consulting GmbH<br />Whistlerweg 27b<br />81479 München<br />Deutschland<br />E-Mail: spontify.me@jq-consulting.de<br />Internet: https://spontify.me<br /><br />Geschäftsführer: Mani Afschar Yazdi<br />Registergericht: Amtsgericht München<br />Registernummer: HRB 135182<br /><br />© 2022 JNet Quality Consulting GmbH<br />Alle Rechte vorbehalten",
 	"legalButton": "Impressum",
 	"statsButton": "Statistiken",
-	"marketing": "<br/>Für alle die Geld verdienen möchten haben wir noch ein besonders Schmankerl. Mehr dazu in den Statistiken."
+	"marketing": "<br/>Für alle die Geld verdienen möchten haben wir noch ein besonders Schmankerl.<br/><br/><audio controls><source src=\"radio1.mp3\" type=\"audio/mpeg\"></audio><br/><br/><span onclick=\"window.open('stats.html#Marketing', 'smStats')\">Mehr dazu in den Statistiken.</span>"
 }

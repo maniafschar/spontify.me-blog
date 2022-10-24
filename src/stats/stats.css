@@ -78,10 +78,9 @@ header {
 }
 
 update {
-	position: absolute;
-	left: 0;
-	text-align: left;
-	padding: 1em;
+	margin-bottom: 2em;
+	position: relative;
+	display: block;
 }
 
 a {
