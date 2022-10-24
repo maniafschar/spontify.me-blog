@@ -21,9 +21,9 @@ class ui {
 		ui.initChartAge(data.user);
 		ui.initChartLog(data.log);
 		ui.initChartApi(data.api);
-		if (location.hash && ui.q('[l="block' + location.hash.substring(1) + '"]'))
+		if (location.hash && ui.q('[l="' + location.hash.substring(1).toLowerCase() + '"]'))
 			setTimeout(function () {
-				ui.q('body').scrollTo(0, ui.q('[l="block' + location.hash.substring(1) + '"]').offsetTop);
+				ui.popup(location.hash.substring(1).toLowerCase());
 			}, 1000);
 	}
 	static initChartGender(data) {
@@ -293,9 +293,8 @@ class ui {
 		ui.q('body').style.fontSize = parseInt('' + x) + 'px';
 	}
 
-	static popup(parent) {
-		ui.q(parent).setAttribute('class', '');
-		var e = ui.q(parent + '>popup').style;
+	static popup(id) {
+		var e = ui.q('popup[l="' + id + '"]').style;
 		setTimeout(function () {
 			e.transform = e.transform && e.transform.indexOf('1') > 0 ? 'scale(0)' : 'scale(1)';
 		}, 100);

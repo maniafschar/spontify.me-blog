@@ -31,8 +31,10 @@
 <body onload="ui.init()">
 	<div>
 		<header>
-
-			<language onclick="ui.setLanguage()"></language>
+			<marketing class="button" onclick="ui.popup('marketing')" style="left:0;">50&euro;</marketing>
+			<popup l="marketing" onclick="ui.popup('marketing')"></popup>
+			<language class="button" onclick="ui.setLanguage()" style="right:0;"></language>
+			<update></update>
 		</header>
 		<br />
 		<block l="blockIntro"></block>
@@ -51,15 +53,11 @@
 		<br />
 		<chart class="api"></chart>
 		<br />
-		<block l="blockMarketing"></block>
-		<br />
 		<block l="blockFooter"></block>
 		<br /><br /><br />
-		<update></update>
-		<legal onclick="ui.popup('legal')" class="">
-			<popup l="legal"></popup>
-			<span l="legalButton"></span>
-		</legal>
+		<legal onclick="ui.popup('legal')" l="legalButton"></legal>
+		<popup l="legal" onclick="ui.popup('legal')"></popup>
+		<br /><br /><br />
 	</div>
 </body>
 
