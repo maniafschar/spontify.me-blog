@@ -19,5 +19,5 @@
 	"legal": "JNet Quality Consulting GmbH<br />Whistlerweg 27b<br />81479 Munich<br />Germany<br />E-Mail: spontify.me@jq-consulting.de<br />Internet: https ://spontify.me<br /><br />Managing Director: Mani Afschar Yazdi<br />Registration court: District Court Munich<br />Registration number: HRB 135182<br /><br />© 2022 JNet Quality Consulting GmbH<br />All rights reserved",
 	"legalButton": "Imprint",
 	"statsButton": "Statistics",
-	"marketing": "<br/>We have a special offer for those who want to make money.<br/><br/><audio controls><source src=\"radio1.mp3\" type=\"audio/mpeg\"></audio><br/><br/><span onclick=\"window.open('stats.html#Marketing', 'smStats')\">More on the statistics page.</span>"
+	"marketing": "<br/>We have a special offer for those who want to make money.<br/><br/><audio controls><source src=\"radio1.mp3\" type=\"audio/mpeg\"></audio><br/><br/><span onclick=\"window.open('stats.html#marketing', 'smStats')\">More on the statistics page.</span>"
 }
