@@ -218,8 +218,10 @@ class ui {
 			index[data[0][i]] = i;
 		var labels = [], values = [];
 		for (var i = 1; i < data.length; i++) {
-			values.push(parseInt('' + (data[i][index['_count']] * 100 + 0.5)));
-			labels.push((i == data.length - 1 ? ui.labels.from + ' ' : '') + (data[i][index['_time']] * 10));
+			if (data[i][index['_time']] > -1) {
+				values.push(parseInt('' + (data[i][index['_count']] * 100 + 0.5)));
+				labels.push((i == data.length - 1 ? ui.labels.from + ' ' : '') + (data[i][index['_time']] * 10));
+			}
 		}
 		if (ui.chartLog) {
 			ui.chartLog.destroy();
