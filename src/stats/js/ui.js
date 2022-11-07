@@ -96,7 +96,7 @@ class ui {
 		}, 400);
 	}
 	static initChartAge(data) {
-		var index = {}, female = [0, 0, 0, 0, 0, 0, 0], male = [0, 0, 0, 0, 0, 0, 0], divers = [0, 0, 0, 0, 0, 0, 0], noData = [0, 0, 0, 0, 0, 0, 0], genderMap = [2, 1, 3, null];
+		var index = {}, female = [0, 0, 0, 0, 0, 0, 0], male = [0, 0, 0, 0, 0, 0, 0], divers = [0, 0, 0, 0, 0, 0, 0], noData = [0, 0, 0, 0, 0, 0, 0];
 		for (var i = 0; i < data[0].length; i++)
 			index[data[0][i]] = i;
 		for (var i = 1; i < data.length; i++) {
@@ -104,7 +104,7 @@ class ui {
 			if (data[i][index['_age']] == null)
 				i2 = male.length - 1;
 			else
-				i2 = data[i][index['_age']] - 2;
+				i2 = data[i][index['_age']] - 1;
 			if (i2 < 0)
 				i2 = 0;
 			else if (i2 > male.length - 1)
