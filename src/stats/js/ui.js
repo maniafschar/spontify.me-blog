@@ -7,6 +7,7 @@ class ui {
 	static chartApi;
 	static chartApiData;
 	static chartGender;
+	static chartLocations;
 	static chartLog;
 	static init() {
 		window.onresize = ui.resize;
@@ -19,6 +20,7 @@ class ui {
 		ui.q('update').innerHTML = ui.labels.headerUpdate.replace('{date}', d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes())
 		ui.initChartGender(data.user);
 		ui.initChartAge(data.user);
+		ui.initChartLocations(data.locations);
 		ui.initChartLog(data.log);
 		ui.initChartApi(data.api);
 		if (location.hash && ui.q('[l="' + location.hash.substring(1).toLowerCase() + '"]'))
@@ -210,6 +212,69 @@ class ui {
 		setTimeout(function () {
 			ui.q("chart.api").innerHTML = '';
 			ui.chartApi.render();
+		}, 400);
+	}
+	static initChartLocations(data) {
+		var index = {};
+		for (var i = 0; i < data[0].length; i++)
+			index[data[0][i]] = i;
+		var l = [], series = [
+			{ name: ui.labels.category0, data: [] },
+			{ name: ui.labels.category1, data: [] },
+			{ name: ui.labels.category2, data: [] },
+			{ name: ui.labels.category3, data: [] },
+			{ name: ui.labels.category4, data: [] },
+			{ name: ui.labels.category5, data: [] }
+		];
+		for (var i = 1; i < data.length; i++) {
+			var category = parseInt(data[i][index['location.category']]);
+			var town = data[i][index['location.town']];
+			var e = null;
+			for (var i2 = 0; i2 < l.length; i2++) {
+				if (l[i2].town == town) {
+					e = l[i2];
+					break;
+				}
+			}
+			if (!e) {
+				e = { total: 0, town: town };
+				l.push(e);
+			}
+			e[category] = data[i][index['_c']] / 10;
+			e.total += e[category];
+		}
+		l.sort(function (a, b) { return a.total < b.total ? 1 : -1 });
+		var labels = [];
+		for (var i = 0; i < Math.min(10, l.length); i++) {
+			for (var i2 = 0; i2 < series.length; i2++)
+				series[i2].data.push(l[i][i2] ? l[i][i2] : 0);
+			labels.push(l[i].town);
+		}
+		if (ui.chartLocations) {
+			ui.chartLocations.destroy();
+			ui.q("chart.locations").innerHTML = '';
+		}
+		ui.chartLocations = new ApexCharts(ui.q("chart.locations"), {
+			chart: {
+				type: 'bar',
+				stacked: true,
+				toolbar: {
+					show: false
+				}
+			},
+			tooltip: {
+				y: {
+					formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
+						return value + '%';
+					}
+				}
+			},
+			series: series,
+			labels: labels
+		});
+		setTimeout(function () {
+			ui.q("chart.locations").innerHTML = '';
+			ui.chartLocations.render();
 		}, 400);
 	}
 	static initChartLog(data) {
