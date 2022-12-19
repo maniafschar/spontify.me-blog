@@ -83,11 +83,7 @@
 		<point onclick="ui.switchPage(4,true)"></point>
 	</index>
 	<links>
-		<language onclick="ui.toggleLanguage()"></language>
-		<stats onclick="window.open('stats.html', 'smStats')">
-			<span l="statsButton"></span>
-		</stats>
-		<info onclick="navigation.popup('info')" class="pulse">Info
+		<info onclick="navigation.popup('info')">Info
 			<popup>
 				<div l="info"></div>
 				<a href="https://spontify.me" target="_blank">https://spontify.me</a><br /><br /><br />
@@ -98,6 +94,10 @@
 				<div l="marketing"></div>
 			</popup>
 		</info>
+		<language onclick="ui.toggleLanguage()"></language>
+		<stats onclick="window.open('stats.html', 'smStats')">
+			<span l="statsButton"></span>
+		</stats>
 		<legal onclick="navigation.popup('legal')">
 			<span l="legalButton"></span>
 			<popup l="legal"></popup>

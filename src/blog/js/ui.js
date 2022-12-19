@@ -46,7 +46,7 @@ class ui {
 		var fontSize = parseInt(ui.q('body').style.fontSize);
 		if (position.indexOf('bottom') > -1) {
 			if (e.getAttribute('class').indexOf('text') > -1)
-				y += 3 * fontSize;
+				y += 2 * fontSize;
 			w = (wTotal - w) / 2;
 			e.style.top = inPercent(y, hTotal);
 			e.style.left = inPercent(w, wTotal);
@@ -55,7 +55,7 @@ class ui {
 			r = inPercent(hTotal - h - y, hTotal);
 		} else if (position.indexOf('right') > -1) {
 			if (e.getAttribute('class').indexOf('text') > -1)
-				y += 3 * fontSize;
+				y += 2 * fontSize;
 			e.style.top = inPercent(y, hTotal);
 			e.style.right = inPercent(wTotal - x, wTotal);
 			e.style.left = inPercent(x, wTotal);
@@ -63,7 +63,7 @@ class ui {
 			r = inPercent(wTotal - x - w, wTotal);
 		} else if (position.indexOf('top') > -1) {
 			if (e.getAttribute('class').indexOf('text') > -1)
-				y += 3 * fontSize;
+				y += 2 * fontSize;
 			w = (wTotal - w) / 2;
 			e.style.top = inPercent(y + h, hTotal);
 			e.style.left = inPercent(w, wTotal);
@@ -72,7 +72,7 @@ class ui {
 			r = inPercent(y, hTotal);
 		} else if (position.indexOf('left') > -1) {
 			if (e.getAttribute('class').indexOf('text') > -1)
-				y += 3 * fontSize;
+				y += 2 * fontSize;
 			e.style.top = inPercent(y, hTotal);
 			e.style.left = inPercent(x + w, wTotal);
 			e.style.right = inPercent(wTotal - x - w, wTotal);
