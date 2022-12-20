@@ -143,11 +143,11 @@ body>page timer {
 }
 
 body>logo {
-	background: url(images/logo.svg);
+	background: url(/images/logo.svg);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	left: 1.5em;
+	left: 0.5em;
 	top: 1.5em;
 	width: 10em;
 	height: 4.5em;
@@ -326,7 +326,7 @@ language {
 	color: rgba(255, 255, 255, 0.5);
 	transition: all .4s ease-out;
 	cursor: pointer;
-	padding: 1em;
+	padding: 1em 0.5em;
 	display: inline-block;
 }
 
@@ -372,7 +372,7 @@ info>popup {
 	transform-origin: top;
 	text-align: center;
 	min-width: 60vw;
-	margin-right: -17em;
+	margin-right: -9em;
 }
 
 info>popup img {

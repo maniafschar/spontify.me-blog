@@ -244,7 +244,7 @@ class ui {
 				}
 			}
 		};
-		xmlhttp.open('GET', 'js/lang/' + language + '.json', true);
+		xmlhttp.open('GET', '/js/lang/' + language + '.json', true);
 		xmlhttp.send();
 	}
 	static toggleLanguage() {
