@@ -16,7 +16,7 @@ class navigation {
 	static next(animationStop) {
 		var i = ui.page + 1;
 		if (i > ui.qa('body>page').length) {
-			if (ui.q('info.pulse')) {
+			if (!ui.q('info popup').style.transform || ui.q('info popup').style.transform.indexOf('1') < 0) {
 				navigation.popup('info');
 				return;
 			}

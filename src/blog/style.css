@@ -129,7 +129,7 @@ page.color4 box.text cover {
 	background: rgb(203, 186, 204);
 }
 
-body>page.right timer {
+body>page.color2 timer {
 	background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -326,8 +326,16 @@ language {
 	color: rgba(255, 255, 255, 0.5);
 	transition: all .4s ease-out;
 	cursor: pointer;
-	padding: 1em 0.5em;
+	padding: 1em;
 	display: inline-block;
+}
+
+stats {
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 0.5em;
+	color: black;
+	padding: 0.75em 1em;
+	margin-top: 1em;
 }
 
 info {
@@ -376,7 +384,7 @@ info>popup {
 }
 
 info>popup img {
-	margin: 0 0.5em;
+	margin: 0.5em;
 	height: 3em;
 }
 

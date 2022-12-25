@@ -18,6 +18,7 @@
 	"info": "Die App ist im Apple und Play Store erhältlich, aber auch im Web unter",
 	"legal": "JNet Quality Consulting GmbH<br />Whistlerweg 27b<br />81479 München<br />Deutschland<br />E-Mail: support@spontify.me<br />Internet: https://spontify.me<br /><br />Geschäftsführer: Mani Afschar Yazdi<br />Registergericht: Amtsgericht München<br />Registernummer: HRB 135182<br /><br />© 2022 JNet Quality Consulting GmbH<br />Alle Rechte vorbehalten",
 	"legalButton": "Impressum",
-	"statsButton": "Statistiken",
+	"infoButton": "Zur App",
+	"statsButton": "Statistische Daten zur App",
 	"marketing": ""
 }
