@@ -3,7 +3,7 @@
 	"blockAge": "We show the stats because we want to work with you to create a cool app for users where the focus is on <b>meeting</b> people, not hanging out in the app for hours. With the help of these statistics along with our exposed <a href=\"https://github.com/maniafschar\" target=\"sm_source\">Source Code</a> we want to ensure maximum <b>transparency</b>. Your feedback is extremely important to us, tell Sponti Support what bothers you or what is still missing.<br/><br/>Now a statistic on the age distribution. Our goal is to become an app for <b>every</b> age group.",
 	"blockApi": "API calls by percentage are listed in the following chart.",
 	"blockLocations": "The distribution of locations according to cities and categories is shown in the following plot. Our current focus on Munich is clearly visible, but will be expanded in the coming year. We are amazed at one or the other city that appears here in the top 10.",
-	"blockLog": "The following shows server <b>response times</b> in milliseconds since 1.9.2022, actually only interesting for IT nerds. If you have any questions about this, Sponti Support in the app will be happy to put you in touch with one of the developers.",
+	"blockLog": "The following shows server <b>response times</b> in milliseconds of the last 90 days, actually only interesting for IT nerds. If you have any questions about this, Sponti Support in the app will be happy to put you in touch with one of the developers.",
 	"blockFooter": "For any questions regarding the app, don't hesitate to ask Sponti Support, she will answer fairly quickly.<br/><br/>Click here to login:<br/><a href=\"https://spontify.me\">https://spontify.me</a>",
 	"marketing": "",
 	"category0": "Shopping",

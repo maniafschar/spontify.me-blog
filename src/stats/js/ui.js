@@ -285,7 +285,7 @@ class ui {
 		for (var i = 1; i < data.length; i++) {
 			if (data[i][index['_time']] > -1) {
 				values.push(parseInt('' + (data[i][index['_count']] * 100 + 0.5)));
-				labels.push((i == data.length - 1 ? ui.labels.from + ' ' : '') + (data[i][index['_time']] * 10));
+				labels.push((i == data.length - 1 ? ui.labels.from + ' ' : '') + (data[i][index['_time']] * 20));
 			}
 		}
 		if (ui.chartLog) {
