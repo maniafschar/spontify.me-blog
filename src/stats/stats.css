@@ -53,7 +53,7 @@ html {
 	font-family: 'Comfortaa';
 	font-style: regular;
 	font-weight: 400;
-	src: url(Comfortaa-Regular.ttf) format('truetype');
+	src: url(font/Comfortaa-Regular.ttf) format('truetype');
 }
 
 body {
@@ -88,8 +88,7 @@ a {
 	text-decoration: none;
 }
 
-block,
-chart {
+block {
 	display: inline-block;
 	position: relative;
 	background: rgba(255, 255, 255, 0.9);
@@ -100,6 +99,20 @@ chart {
 	width: 40em;
 	color: black;
 	line-height: 1.8;
+}
+
+block>span {
+	padding-bottom: 0.5em;
+	display: block;
+}
+
+block>chart {
+	display: inline-block;
+	position: relative;
+	background: rgba(255, 255, 255, 0.4);
+	border-radius: 0.5em;
+	width: 100%;
+	color: black;
 }
 
 ul {
@@ -162,7 +175,6 @@ header popup {
 
 .button {
 	position: absolute;
-	border: solid 0.15em white;
 	border-radius: 1.5em;
 	width: 3em;
 	height: 3em;

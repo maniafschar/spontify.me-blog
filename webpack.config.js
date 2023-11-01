@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
 	entry: {
-		main: './src/blog/js/main.js',
+		// main: './src/blog/js/main.js',
 		stats: './src/stats/js/main.js'
 	},
 	mode: 'production',

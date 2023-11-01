@@ -33,7 +33,7 @@ class ui {
 		for (var i = 0; i < data[0].length; i++)
 			index[data[0][i]] = i;
 		for (var i = 1; i < data.length; i++) {
-			var x = data[i][index['_count']] / 1000;
+			var x = data[i][index['_count']];
 			for (var i2 = 0; i2 < genderMap.length; i2++) {
 				if (data[i][index['contact.gender']] == genderMap[i2]) {
 					total[i2] += x;
@@ -45,9 +45,9 @@ class ui {
 			}
 		}
 		for (var i = 0; i < total.length; i++) {
-			total[i] = (parseInt(total[i] * 10 + 0.5) / 10);
-			verified[i] = (parseInt(verified[i] * 10 + 0.5) / 10);
-			withImage[i] = (parseInt(withImage[i] * 10 + 0.5) / 10);
+			total[i] = (parseInt(total[i] * 100 + 0.5));
+			verified[i] = (parseInt(verified[i] * 100 + 0.5));
+			withImage[i] = (parseInt(withImage[i] * 100 + 0.5));
 		}
 		if (ui.chartGender)
 			ui.chartGender.destroy();
@@ -102,7 +102,7 @@ class ui {
 		for (var i = 0; i < data[0].length; i++)
 			index[data[0][i]] = i;
 		for (var i = 1; i < data.length; i++) {
-			var x = data[i][index['_count']] / 1000, i2;
+			var x = data[i][index['_count']], i2;
 			if (data[i][index['_age']] == null)
 				i2 = male.length - 1;
 			else
@@ -121,10 +121,10 @@ class ui {
 				noData[i2] += x;
 		}
 		for (var i = 0; i < female.length; i++) {
-			female[i] = parseInt(0.5 + female[i]);
-			male[i] = parseInt(0.5 + male[i]);
-			divers[i] = parseInt(0.5 + divers[i]);
-			noData[i] = parseInt(0.5 + noData[i]);
+			female[i] = parseInt(0.5 + female[i] * 100);
+			male[i] = parseInt(0.5 + male[i] * 100);
+			divers[i] = parseInt(0.5 + divers[i] * 100);
+			noData[i] = parseInt(0.5 + noData[i] * 100);
 		}
 		if (ui.chartAge) {
 			ui.chartAge.destroy();
@@ -138,13 +138,13 @@ class ui {
 				}
 			},
 			dataLabels: {
-				formatter: function (val, opt) {
+				formatter: function (val) {
 					return val + '%'
 				}
 			},
 			tooltip: {
 				y: {
-					formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
+					formatter: function (value) {
 						return value + '%';
 					}
 				}
@@ -218,37 +218,10 @@ class ui {
 		var index = {};
 		for (var i = 0; i < data[0].length; i++)
 			index[data[0][i]] = i;
-		var l = [], series = [
-			{ name: ui.labels.category0, data: [] },
-			{ name: ui.labels.category1, data: [] },
-			{ name: ui.labels.category2, data: [] },
-			{ name: ui.labels.category3, data: [] },
-			{ name: ui.labels.category4, data: [] },
-			{ name: ui.labels.category5, data: [] }
-		];
-		for (var i = 1; i < data.length; i++) {
-			var category = parseInt(data[i][index['location.category']]);
-			var town = data[i][index['location.town']];
-			var e = null;
-			for (var i2 = 0; i2 < l.length; i2++) {
-				if (l[i2].town == town) {
-					e = l[i2];
-					break;
-				}
-			}
-			if (!e) {
-				e = { total: 0, town: town };
-				l.push(e);
-			}
-			e[category] = data[i][index['_c']] / 10;
-			e.total += e[category];
-		}
-		l.sort(function (a, b) { return a.total < b.total ? 1 : -1 });
-		var labels = [];
-		for (var i = 0; i < Math.min(10, l.length); i++) {
-			for (var i2 = 0; i2 < series.length; i2++)
-				series[i2].data.push(l[i][i2] ? l[i][i2] : 0);
-			labels.push(l[i].town);
+		var l = [], labels = [];
+		for (var i = 1; i < 16; i++) {
+			l.push(data[i][index['_c']] / 10);
+			labels.push(data[i][index['location.town']]);
 		}
 		if (ui.chartLocations) {
 			ui.chartLocations.destroy();
@@ -257,19 +230,20 @@ class ui {
 		ui.chartLocations = new ApexCharts(ui.q("chart.locations"), {
 			chart: {
 				type: 'bar',
-				stacked: true,
 				toolbar: {
 					show: false
 				}
 			},
 			tooltip: {
 				y: {
-					formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
+					formatter: function (value) {
 						return value + '%';
 					}
 				}
 			},
-			series: series,
+			series: [{
+				data: l
+			}],
 			labels: labels
 		});
 		setTimeout(function () {
@@ -285,7 +259,7 @@ class ui {
 		for (var i = 1; i < data.length; i++) {
 			if (data[i][index['_time']] > -1) {
 				values.push(parseInt('' + (data[i][index['_count']] * 100 + 0.5)));
-				labels.push((i == data.length - 1 ? ui.labels.from + ' ' : '') + (data[i][index['_time']] * 20));
+				labels.push((i == data.length - 1 ? ui.labels.from + ' ' : '') + (data[i][index['_time']] * 10));
 			}
 		}
 		if (ui.chartLog) {

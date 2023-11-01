@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title>spontify.me Statistics</title>
+	<title>Fanclub Statistics</title>
 	<meta name="viewport"
 		content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover, user-scalable=no" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -19,13 +19,13 @@
 	<meta name="format-detection" content="date=no" />
 	<meta name="format-detection" content="address=no" />
 	<meta name="format-detection" content="email=no" />
-	<link rel="apple-touch-icon" href="https://spontify.me/images/icon.png">
-	<link rel="canonical" href="https://blog.spontify.me/stats.html" />
+	<link rel="apple-touch-icon" href="https://fan-club.online/images/icon.png">
+	<link rel="canonical" href="https://fcbayerntotal.fan-club.online/stats.html" />
 	<link rel="icon" type="image/x-icon" href="favicon.ico" />
 	<meta property="og:title" content="spontify.me Statistics" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://blog.spontify.me/stats.html" />
-	<meta property="og:image" content="https://blog.spontify.me/preview.jpg" />
+	<meta property="og:url" content="https://fcbayerntotal.fan-club.online/stats.html" />
+	<meta property="og:image" content="https://fcbayerntotal.fan-club.online/preview.jpg" />
 </head>
 
 <body onload="ui.init()">
@@ -36,27 +36,26 @@
 			<language class="button" onclick="ui.setLanguage()" style="right:0;"></language>
 			<update></update>
 		</header>
-		<br />
-		<block l="blockIntro"></block>
-		<br />
-		<chart class="gender"></chart>
-		<br />
-		<block l="blockAge"></block>
-		<br />
-		<chart class="age"></chart>
-		<br />
-		<block l="blockLocations"></block>
-		<br />
-		<chart class="locations"></chart>
-		<br />
-		<block l="blockLog"></block>
-		<br />
-		<chart class="log"></chart>
-		<br />
-		<block l="blockApi"></block>
-		<br />
-		<chart class="api"></chart>
-		<br />
+		<block>
+			<span l="blockIntro"></span>
+			<chart class="gender"></chart>
+		</block>
+		<block>
+			<span l="blockAge"></span>
+			<chart class="age"></chart>
+		</block>
+		<block>
+			<span l="blockLocations"></span>
+			<chart class="locations"></chart>
+		</block>
+		<block>
+			<span l="blockLog"></span>
+			<chart class="log"></chart>
+		</block>
+		<block>
+			<span l="blockApi"></span>
+			<chart class="api"></chart>
+		</block>
 		<block l="blockFooter"></block>
 		<br /><br /><br />
 		<legal onclick="ui.popup('legal')" l="legalButton"></legal>
